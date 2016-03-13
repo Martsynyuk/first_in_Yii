@@ -11,7 +11,7 @@ use app\models\ContactForm;
 use app\models\EntryForm;
 
 class SiteController extends Controller
-{
+{		
 		public function actionSay($message = 'Hello small world')
 		{
 			return $this->render('say', ['message' => $message]);
