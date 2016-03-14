@@ -14,7 +14,7 @@ use app\assets\AppAsset;
 <head>
     <meta charset="UTF-8"/>
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode($this->title) ?>project</title>
     <?php $this->head() ?>
     <?= Html::cssFile('@web/css/bootstrap.css') ?>
     <?= Html::cssFile('@web/css/main.css') ?>
@@ -22,8 +22,12 @@ use app\assets\AppAsset;
 <body>
 <?php $this->beginBody() ?>
 <main class="main container">
-    <header class="span12"></header>
-    <content class="span12">
+    <header class="top span12">
+    	<a href="/">
+    		<img src="/img/logotip.png" alt="logotip">
+    	</a>
+    </header>
+    <content class="content span12">
     	<?= $content ?>
     </content>
     <footer class="footer span12">&#169 2015 Wise Engineering</footer>
