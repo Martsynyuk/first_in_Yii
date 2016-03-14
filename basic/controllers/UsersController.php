@@ -10,8 +10,7 @@ Class UsersController extends Controller
 	
 	public function actionIndex()
 	{
-		$text = 'some text';
-		
-		return $this->render('index', ['text' => $text]);
+	
+		return $this->render('index', []);
 	}
 }

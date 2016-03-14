@@ -17,6 +17,14 @@ html, body{
 }
 
 .main .content{
+	margin-top: 40px;
+}
+
+.main .content .contact{
+	width: 720px;
+	margin: 0 auto;
+	height: 200px;
+	background-color: white;
 }
 
 .main .footer{
