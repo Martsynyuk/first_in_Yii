@@ -16,12 +16,20 @@ html, body{
 	height: 100px;
 }
 
+.main .top .header-menu{
+	float: right;
+	margin-top: 30px;
+	width: 700px;
+	height: 20px;
+	background-color: white;
+}
+
 .main .content{
 	margin-top: 40px;
 }
 
-.main .content .contact{
-	width: 720px;
+.main .content .content_autorization{
+	width: 420px;
 	margin: 0 auto;
 	height: 200px;
 	background-color: white;
@@ -34,4 +42,7 @@ html, body{
 	text-align: center;
 	height: 20px;
 	bottom: 20px;
+}
+.claer{
+	clear: both;
 }

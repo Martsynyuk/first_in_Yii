@@ -6,11 +6,11 @@ use yii\web\Controller;
 
 Class UsersController extends Controller
 {
-	public $layout = 'first';
+	public $layout = 'main';
 	
 	public function actionIndex()
 	{
 	
-		return $this->render('index', []);
+		return $this->render('autorization', []);
 	}
 }

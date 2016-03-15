@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
-<div class="contact">
+<div class="content_autorization">
 </div>
 
 
