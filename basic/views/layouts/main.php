@@ -17,6 +17,7 @@ use app\assets\AppAsset;
     <title><?= Html::encode($this->title) ?>project</title>
     <?php $this->head() ?>
     <?= Html::cssFile('@web/css/bootstrap.css') ?>
+    <?= Html::cssFile('@web/css/font-awesome.css') ?>
     <?= Html::cssFile('@web/css/main.css') ?>
 </head>
 <body>
@@ -27,7 +28,6 @@ use app\assets\AppAsset;
     		<img src="/img/logotip.png" alt="logotip">
     	</a>
     	<div class="header-menu">
-    	
     	</div>
     	<div class="claer"></div>
     </header>

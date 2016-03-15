@@ -10,7 +10,7 @@ Class UsersController extends Controller
 	
 	public function actionIndex()
 	{
-	
-		return $this->render('autorization', []);
+		$text = 'some text';
+		return $this->render('autorization', ['text' => $text]);
 	}
 }
