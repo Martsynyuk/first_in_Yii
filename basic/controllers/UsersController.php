@@ -3,14 +3,15 @@
 namespace app\controllers;
 
 use yii\web\Controller;
+use app\models\EntryForm;
 
 Class UsersController extends Controller
 {
 	public $layout = 'main';
 	
-	public function actionIndex()
+	public function actionAutorization()
 	{
-		$text = 'some text';
-		return $this->render('autorization', ['text' => $text]);
+		$model = new EntryForm();
+		return $this->render('autorization', ['model' => $model]);
 	}
 }
