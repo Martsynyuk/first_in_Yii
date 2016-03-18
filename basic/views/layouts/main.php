@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
@@ -14,7 +15,7 @@ use app\assets\AppAsset;
 <head>
     <meta charset="UTF-8"/>
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?>project</title>
+    <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <?= Html::cssFile('@web/css/bootstrap.css') ?>
     <?= Html::cssFile('@web/css/font-awesome.css') ?>
@@ -24,7 +25,7 @@ use app\assets\AppAsset;
 <?php $this->beginBody() ?>
 <main class="main container">
     <header class="top span12">
-    	<a href="/">
+    	<a href="<?= $relativeHomeUrl = Url::home(); ?>">
     		<img src="/img/logotip.png" alt="logotip">
     	</a>
     	<div class="header-menu">
@@ -34,7 +35,7 @@ use app\assets\AppAsset;
     <content class="content span12">
     	<?= $content ?>
     </content>
-    <footer class="footer span12">&#169 2015 Wise Engineering</footer>
+    <footer class="footer span12">&#169 2016 Wise Engineering</footer>
 </main>
 <?php $this->endBody() ?>
 </body>
