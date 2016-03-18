@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
-use app\models\EntryForm;
+use app\models\RegistrationForm;
 use app\models\LoginForm;
 
 Class UsersController extends Controller
@@ -19,11 +19,10 @@ Class UsersController extends Controller
 	
 	public function actionRegistration()
 	{
-		$model = new LoginForm();
+		$model = new RegistrationForm();
 		
 		if ($model->load(Yii::$app->request->post()) && $model->validate()) 
 		{
-			echo 'asdas';
 			return $this->render('registration', ['model' => $model]);
 		}
 		else{
