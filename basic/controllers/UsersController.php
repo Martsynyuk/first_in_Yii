@@ -19,19 +19,12 @@ Class UsersController extends Controller
 		
 		if($model->load(Yii::$app->request->post()) && $model->validate()) {
 			
-			$hash = User::findOne(['login' => Yii::$app->request->post()['User']['login']])->password;
+			$user = User::findOne(['login' => Yii::$app->request->post()['User']['login']]);
 			
-			if (Yii::$app->getSecurity()->validatePassword(Yii::$app->request->post()['User']['password'], $hash)) {
-		
-				$user = Auth::findOne(['login' => Yii::$app->request->post()['User']['login']]);
+			if (Yii::$app->getSecurity()->validatePassword(Yii::$app->request->post()['User']['password'], $user->password)) {
 				Yii::$app->user->login($user);
-				
-				var_dump(Yii::$app->user->id);
-				die;
-				
 				$this->redirect('/contacts');
 			} else {
-				
 				$model->addError('password', 'Wrong password');
 			}
 			
