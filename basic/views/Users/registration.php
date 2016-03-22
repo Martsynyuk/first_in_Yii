@@ -5,8 +5,9 @@ use yii\widgets\ActiveForm;
 <div class="content_autorization">
 	<?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username') ?>
+    <?= $form->field($model, 'login') ?>
     <?= $form->field($model, 'password')->passwordInput() ?>
+    <?= $form->field($model, 'confirm_password')->passwordInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>

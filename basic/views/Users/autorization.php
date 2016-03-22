@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 <div class="content_autorization">
 	<?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'username') ?>
+    <?= $form->field($model, 'login') ?>
 
     <?= $form->field($model, 'password')->passwordInput() ?>
 
