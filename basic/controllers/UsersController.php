@@ -21,13 +21,19 @@ Class UsersController extends Controller
 			
 			$user = User::findOne(['login' => Yii::$app->request->post()['User']['login']]);
 			
-			if (Yii::$app->getSecurity()->validatePassword(Yii::$app->request->post()['User']['password'], $user->password)) {
-				Yii::$app->user->login($user);
-				$this->redirect('/contacts');
-			} else {
-				$model->addError('password', 'Wrong password');
+			if(!empty($user))
+			{
+				if (Yii::$app->getSecurity()->validatePassword(Yii::$app->request->post()['User']['password'], $user->password)) {
+					Yii::$app->user->login($user);
+					$this->redirect('/contacts');
+				} else {
+					
+					$model->addError('login', 'Wrong login or password');
+				}		
 			}
-			
+			else{
+				$model->addError('login', 'Wrong login or password');
+			}
 		}
 		
 		return $this->render('autorization', ['model' => $model]);

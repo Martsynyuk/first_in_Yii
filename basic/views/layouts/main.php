@@ -29,7 +29,6 @@ use app\assets\AppAsset;
     		<img src="/img/logotip.png" alt="logotip">
     	</a>
     	<div class="header-menu">
-    		<?= $this->render('@app/views/elements/menu') ?>
     	</div>
     	<div class="claer"></div>
     </header>
