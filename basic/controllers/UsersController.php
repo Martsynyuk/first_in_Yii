@@ -14,8 +14,14 @@ Class UsersController extends Controller
 	
 	public function actionAutorization()
 	{
+		if(!empty(Yii::$app->user->identity))
+		{
+			$this->redirect('/contacts/index');
+		}
+		
 		$model = new User();
 		$model->scenario = User::SCENARIO_LOGIN;
+		
 		if($model->load(Yii::$app->request->post()) && $model->validate()) {
 			
 			$user = User::findOne(['login' => Yii::$app->request->post()['User']['login']]);

@@ -2,7 +2,45 @@
 
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
+use yii\helpers\Url;
+
 ?>
-<h1>Countries</h1>
-<pre><?= var_dump(Yii::$app->user->identity)?></pre>
-</ul>
+
+<div class="contact">
+	<table class="table">
+		<tr>
+			<th></th>
+			<th>First Name
+			
+			</th>
+			<th>Last Name
+			
+			</th>
+			<th>E-mail
+			
+			</th>
+			<th>Cellular
+			
+			</th>
+			<th>Action
+			
+			</th>
+		</tr>
+	<tbody>
+	<?php foreach ( $contacts as $contact ) : ?>
+		<tr>
+		<td><?= $i . '.'; ?></td>
+							<td><?= $contact['FirstName']; ?></td>
+							<td><?= $contact['LastName']; ?></td>
+							<td><?= $contact['Email']; ?></td>
+							<td><?= $contact['Telephone']; ?></td>
+							<td>
+								
+							</td>
+				
+					<?php $i++;?>
+	<?php endforeach;?>
+		</tr>
+	</tbody>
+	</table>
+</div>

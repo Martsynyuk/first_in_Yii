@@ -25,7 +25,7 @@ use app\assets\AppAsset;
 <?php $this->beginBody() ?>
 <main class="main container">
     <header class="top span12">
-    	<a href="<?= $relativeHomeUrl = Url::home(); ?>">
+    	<a href="<?= Url::home(); ?>">
     		<img src="/img/logotip.png" alt="logotip">
     	</a>
     	<div class="header-menu">

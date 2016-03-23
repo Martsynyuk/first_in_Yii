@@ -26,6 +26,7 @@ html, body{
 
 .main .content{
 	margin-top: 40px;
+	padding-bottom: 50px;
 }
 
 .main .content .content_autorization{
@@ -36,7 +37,10 @@ html, body{
 	margin: 0 auto;
 	background-color: white;
 }
-
+.content .contact{
+	width: 720px;
+	margin: 0 auto;
+}
 .main .footer{
 	position: absolute;
 	bottom: 0;
