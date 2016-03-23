@@ -15,15 +15,16 @@ class ContactsController extends Controller
 		$query = Information::find()->where(['users_id' => Yii::$app->user->id]);
 		
 		$pagination = new Pagination([
-				'defaultPageSize' => 5,
+				'defaultPageSize' => 1,
 				'totalCount' => $query->count(),
+				
 		]);
 		
 		$contacts = $query->orderBy('id')
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
-		
+		//echo '<pre>'; var_dump($pagination); echo '</pre>'; 
 		$i = 1; // count for contacts
 		
 		return $this->render('index', ['contacts' => $contacts, 'i' => $i, 'pagination' => $pagination ]);
