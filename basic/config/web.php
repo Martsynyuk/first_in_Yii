@@ -43,7 +43,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-            		'/' => '/contacts/index',          		
+            		'/' => '/contacts/index',    
             ],
         ],
         
