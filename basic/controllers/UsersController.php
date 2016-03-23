@@ -16,7 +16,6 @@ Class UsersController extends Controller
 	{
 		$model = new User();
 		$model->scenario = User::SCENARIO_LOGIN;
-		
 		if($model->load(Yii::$app->request->post()) && $model->validate()) {
 			
 			$user = User::findOne(['login' => Yii::$app->request->post()['User']['login']]);
@@ -25,7 +24,7 @@ Class UsersController extends Controller
 			{
 				if (Yii::$app->getSecurity()->validatePassword(Yii::$app->request->post()['User']['password'], $user->password)) {
 					Yii::$app->user->login($user);
-					$this->redirect('/contacts');
+					$this->redirect('/contacts/index');
 				} else {
 					
 					$model->addError('login', 'Wrong login or password');
