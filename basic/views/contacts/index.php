@@ -43,5 +43,10 @@ use yii\helpers\Url;
 		</tr>
 	</tbody>
 	</table>
-	<?= LinkPager::widget(['pagination' => $pagination, 'maxButtonCount' => MAXBUTTONCOUNT]) ?>
+	<?= LinkPager::widget([
+			'pagination' => $pagination, 
+			'maxButtonCount' => MAXBUTTONCOUNT,
+			'firstPageLabel' => true,
+			'lastPageLabel' => true
+	]) ?>
 </div>
