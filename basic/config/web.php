@@ -2,6 +2,9 @@
 
 $params = require(__DIR__ . '/params.php');
 
+const ROWLIMIT = 5; // count of displaying contact
+const MAXBUTTONCOUNT = 5; // limit of pagination button
+
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),

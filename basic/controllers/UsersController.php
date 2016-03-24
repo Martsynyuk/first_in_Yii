@@ -16,7 +16,7 @@ Class UsersController extends Controller
 	{
 		if(!empty(Yii::$app->user->identity))
 		{
-			$this->redirect('/contacts/index');
+			$this->redirect('/');
 		}
 		
 		$model = new User();

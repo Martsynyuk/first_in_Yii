@@ -15,7 +15,7 @@ class ContactsController extends Controller
 		$query = Information::find()->where(['users_id' => Yii::$app->user->id]);
 		
 		$pagination = new Pagination([
-				'defaultPageSize' => 1,
+				'defaultPageSize' => ROWLIMIT,
 				'totalCount' => $query->count(),
 				
 		]);
@@ -24,8 +24,12 @@ class ContactsController extends Controller
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
-		//echo '<pre>'; var_dump($pagination); echo '</pre>'; 
+		
 		$i = 1; // count for contacts
+		if($pagination->getPage() == 1 or $pagination->getPage() > 1)
+		{
+			$i = ($pagination->getPage()+1) * ROWLIMIT - ROWLIMIT + 1;
+		}
 		
 		return $this->render('index', ['contacts' => $contacts, 'i' => $i, 'pagination' => $pagination ]);
 	}
