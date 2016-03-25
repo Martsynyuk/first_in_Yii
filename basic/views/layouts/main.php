@@ -47,7 +47,7 @@ use yii\base\Widget;
     <content class="content span12">
     	<?= $content ?>
     </content>
-    <footer class="footer span12">&#169 2016 Wise Engineering</footer>
+    <footer class="footer span12">&#169 2005 - <?= date('Y')?> Wise Engineering</footer>
 </main>
 <?php $this->endBody() ?>
 </body>
