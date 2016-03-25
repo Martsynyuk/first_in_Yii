@@ -51,6 +51,29 @@ html, body{
 	width: 720px;
 	margin: 0 auto;
 }
+.content .contact .table{
+	border-collapse: inherit;
+	margin-bottom: 0;
+}
+.content .contact .table tr:first-child th:first-child {
+    border-top-left-radius:30px
+}
+.content .contact .table tr:first-child th:last-child {
+    border-top-right-radius:30px
+}
+.content .contact .table td, .content .contact .table th{
+	border: 0;
+	padding: 10px 0 3px 8px;
+}
+.content .contact .table .table_top{
+	background: url(/img/contact_top_grad.png) repeat-x;
+}
+.content .contact .table .table_top .action{
+	width: 90px;
+}
+.content .contact .table tr{
+	background: url(/img/contact_cont_grad.png) repeat-x;
+}
 .content .contact .table tr>td{
 	position: relative;
 }
@@ -58,7 +81,7 @@ html, body{
 	display: block;
 	position: absolute;
 	top: 10px;
-	right: -30px;
+	right: -31px;
 	width: 30px;
 	height: 18px;
 }
@@ -66,6 +89,38 @@ html, body{
 	background: url(/img/delete.png) no-repeat;
 	width: 30px;
 	height: 18px;
+} 
+.content .contact .table tr>td a{
+	color: white;
+}
+.content .contact .table .edit, .content .contact .table .view{
+	text-align: center;
+	font-size: 12px;
+}
+.content .contact .table .edit{
+	background: url(/img/edit.png) no-repeat;
+	width: 35px;
+	height: 18px;
+	float: left;
+}
+
+.content .contact .table .view{
+	background: url(/img/view.png) no-repeat;
+	width: 43px;
+	height: 18px;
+	float: right;
+}
+.content .contact .bottom{
+	background: url(/img/cont_bottom_grad.png) repeat-x;
+	height: 52px;
+	width: 720px;
+	border-radius: 0px 0px 30px 30px;
+}
+.content .contact .pagination{
+	background: url(/img/bottom_menu.png) no-repeat;
+	width: 500px;
+	margin: 0 auto;
+	position: relative;
 }
 .main .footer{
 	position: absolute;

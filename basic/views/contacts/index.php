@@ -9,7 +9,7 @@ use yii\helpers\Url;
 
 <div class="contact">
 	<table class="table">
-		<tr>
+		<tr class="table_top">
 			<th></th>
 			<th>First Name
 			
@@ -23,7 +23,7 @@ use yii\helpers\Url;
 			<th>Cellular
 			
 			</th>
-			<th>Action
+			<th class="action">Action
 			
 			</th>
 		</tr>
@@ -46,10 +46,13 @@ use yii\helpers\Url;
 		</tr>
 	</tbody>
 	</table>
-	<?= LinkPager::widget([
-			'pagination' => $pagination, 
-			'maxButtonCount' => MAXBUTTONCOUNT,
-			'firstPageLabel' => true,
-			'lastPageLabel' => true
-	]) ?>
+	<div class="bottom"></div>
+	<div class="pagination">
+		<?= LinkPager::widget([
+				'pagination' => $pagination, 
+				'maxButtonCount' => MAXBUTTONCOUNT,
+				'firstPageLabel' => true,
+				'lastPageLabel' => true
+		]) ?>
+	</div>
 </div>
