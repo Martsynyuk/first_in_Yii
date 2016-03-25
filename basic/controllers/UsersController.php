@@ -11,7 +11,7 @@ use app\models\Auth;
 Class UsersController extends Controller
 {
 	public $layout = 'main';
-	
+		
 	public function actionAutorization()
 	{
 		if(!empty(Yii::$app->user->identity))
@@ -30,7 +30,7 @@ Class UsersController extends Controller
 			{
 				if (Yii::$app->getSecurity()->validatePassword(Yii::$app->request->post()['User']['password'], $user->password)) {
 					Yii::$app->user->login($user);
-					$this->redirect('/contacts/index');
+					$this->redirect('/');
 				} else {
 					
 					$model->addError('login', 'Wrong login or password');

@@ -20,10 +20,20 @@ html, body{
 	float: right;
 	margin-top: 30px;
 	width: 700px;
-	height: 20px;
-	background-color: white;
 }
-
+.main .top .header-menu ul>li{
+	display: inline-block;
+	margin: 5px 0 5px 10px;
+}
+.main .top .header-menu .left{
+	margin-right: 15px;
+	font-family: FontAwesome;
+}
+.main .top .header-menu .menu_button{
+	height: 20px;
+	border-radius:20px;
+	padding: 2px 15px;
+}
 .main .content{
 	margin-top: 40px;
 	padding-bottom: 50px;

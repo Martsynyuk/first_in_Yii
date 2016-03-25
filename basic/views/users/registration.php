@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 ?>
+<?php $this->params['menu'] = ['autorization', 'registration'] ?>
 <div class="content_autorization">
 	<?php $form = ActiveForm::begin(); ?>
 

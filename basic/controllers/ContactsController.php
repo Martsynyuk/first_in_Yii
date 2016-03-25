@@ -9,6 +9,7 @@ use app\models\Information;
 
 class ContactsController extends Controller
 {
+	
 	public function actionIndex()
 	{
 		
