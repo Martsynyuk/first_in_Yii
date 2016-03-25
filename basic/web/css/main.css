@@ -51,6 +51,22 @@ html, body{
 	width: 720px;
 	margin: 0 auto;
 }
+.content .contact .table tr>td{
+	position: relative;
+}
+.content .contact .table .delete{
+	display: block;
+	position: absolute;
+	top: 10px;
+	right: -30px;
+	width: 30px;
+	height: 18px;
+}
+.content .contact .table tr:hover .delete {
+	background: url(/img/delete.png) no-repeat;
+	width: 30px;
+	height: 18px;
+}
 .main .footer{
 	position: absolute;
 	bottom: 0;
