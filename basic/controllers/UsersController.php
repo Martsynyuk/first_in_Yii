@@ -61,4 +61,10 @@ Class UsersController extends Controller
 		}
 		
 	}
+	
+	public function actionLogout()
+	{	
+		Yii::$app->user->logout();
+		$this->redirect('/users/autorization');
+	}
 }

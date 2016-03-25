@@ -12,7 +12,6 @@ class ContactsController extends Controller
 	
 	public function actionIndex()
 	{
-		
 		$query = Information::find()->where(['users_id' => Yii::$app->user->id]);
 		
 		$pagination = new Pagination([
@@ -33,5 +32,17 @@ class ContactsController extends Controller
 		}
 		
 		return $this->render('index', ['contacts' => $contacts, 'i' => $i, 'pagination' => $pagination ]);
+	}
+	
+	public function actionAddcontact()
+	{
+		
+		return $this->render('addcontact');
+	}
+	
+	public function actionLetter()
+	{
+	
+		return $this->render('letter');
 	}
 }
