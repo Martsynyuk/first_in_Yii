@@ -20,7 +20,7 @@ class ContactsController extends Controller
 				
 		]);
 		
-		$contacts = $query->orderBy('id')
+		$contacts = $query->orderBy('FirstName')
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
@@ -37,6 +37,30 @@ class ContactsController extends Controller
 	public function actionAddcontact()
 	{
 		$model = new Information();
+		
+		if($model->load(Yii::$app->request->post()) && $model->validate() && $model->validate())
+		{
+			(new \yii\db\Query())->createCommand()->insert('Information', [
+					'users_id' => Yii::$app->user->identity['id'],
+					'FirstName' => Yii::$app->request->post()['Information']['FirstName'],
+					'LastName' => Yii::$app->request->post()['Information']['LastName'],
+					'Email' => Yii::$app->request->post()['Information']['Email'],
+					'Home' => Yii::$app->request->post()['Information']['Home'],
+					'Work' => Yii::$app->request->post()['Information']['Work'],
+					'Cell' => Yii::$app->request->post()['Information']['Cell'],
+					'Adress1' => Yii::$app->request->post()['Information']['Adress1'],
+					'Adress2' => Yii::$app->request->post()['Information']['Adress2'],
+					'City' => Yii::$app->request->post()['Information']['City'],
+					'State' => Yii::$app->request->post()['Information']['State'],
+					'Zip' => Yii::$app->request->post()['Information']['Zip'],
+					'Country' => Yii::$app->request->post()['Information']['Country'],
+					'BirthDate' => Yii::$app->request->post()['year'] . '-' . Yii::$app->request->post()['month'] . '-'
+						. Yii::$app->request->post()['day'],
+					'Telephone' => ''
+			])->execute();
+			
+			$this->redirect('/');
+		}
 
 		return $this->render('addcontact', ['model' => $model]);
 	}
