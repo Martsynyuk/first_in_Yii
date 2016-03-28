@@ -36,13 +36,14 @@ class ContactsController extends Controller
 	
 	public function actionAddcontact()
 	{
-		
-		return $this->render('addcontact');
+		$model = new Information();
+
+		return $this->render('addcontact', ['model' => $model]);
 	}
 	
 	public function actionLetter()
 	{
-	
+
 		return $this->render('letter');
 	}
 }
