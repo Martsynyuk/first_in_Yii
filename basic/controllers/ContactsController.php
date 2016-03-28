@@ -38,7 +38,7 @@ class ContactsController extends Controller
 	{
 		$model = new Information();
 		
-		if($model->load(Yii::$app->request->post()) && $model->validate() && $model->validate())
+		if($model->load(Yii::$app->request->post()) && $model->validate())
 		{
 			(new \yii\db\Query())->createCommand()->insert('Information', [
 					'users_id' => Yii::$app->user->identity['id'],
@@ -63,6 +63,43 @@ class ContactsController extends Controller
 		}
 
 		return $this->render('addcontact', ['model' => $model]);
+	}
+	
+	public function actionEdit()
+	{
+		$model = new Information();
+		
+		$contact = (new \yii\db\Query())
+			->select('*')
+			->from('Information')
+			->where(['users_id' => Yii::$app->user->id, 'id' => Yii::$app->request->get('id')])
+			->one();
+		
+		if($model->load(Yii::$app->request->post()) && $model->validate())
+		{
+			(new \yii\db\Query())->createCommand()->update('Information', [
+					'FirstName' => Yii::$app->request->post()['Information']['FirstName'],
+					'LastName' => Yii::$app->request->post()['Information']['LastName'],
+					'Email' => Yii::$app->request->post()['Information']['Email'],
+					'Home' => Yii::$app->request->post()['Information']['Home'],
+					'Work' => Yii::$app->request->post()['Information']['Work'],
+					'Cell' => Yii::$app->request->post()['Information']['Cell'],
+					'Adress1' => Yii::$app->request->post()['Information']['Adress1'],
+					'Adress2' => Yii::$app->request->post()['Information']['Adress2'],
+					'City' => Yii::$app->request->post()['Information']['City'],
+					'State' => Yii::$app->request->post()['Information']['State'],
+					'Zip' => Yii::$app->request->post()['Information']['Zip'],
+					'Country' => Yii::$app->request->post()['Information']['Country'],
+					'BirthDate' => Yii::$app->request->post()['year'] . '-' . Yii::$app->request->post()['month'] . '-'
+					. Yii::$app->request->post()['day'],
+					'Telephone' => ''
+			], ['id' => Yii::$app->request->get('id')])
+			->execute();
+				
+			$this->redirect('/');
+		}
+		
+		return $this->render('editcontact', ['model' => $model, 'contact' => $contact]);
 	}
 	
 	public function actionLetter()

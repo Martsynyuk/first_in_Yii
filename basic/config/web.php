@@ -45,8 +45,10 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+        		'enableStrictParsing' => false,
             'rules' => [
-            		'/' => '/contacts/index',    
+            		'/' => '/contacts/index', 
+            		'/contacts/edit/<id:\d+>' => '/contacts/edit/'
             ],
         ],
         
