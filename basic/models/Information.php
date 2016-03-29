@@ -13,7 +13,9 @@ class Information extends ActiveRecord
 		return [
 				
 				[['FirstName', 'LastName', 'Email'], 'required'],
-				['Email', 'email']
+				['Email', 'email'],
+				[['Zip'], 'integer'],
+				['Home', 'match', 'pattern' => '/[0-9]/']
 		];
 	}
 }

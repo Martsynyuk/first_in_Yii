@@ -123,6 +123,12 @@ class ContactsController extends Controller
 		return $this->render('viewcontact', ['contact' => $contact]);
 	}
 	
+	public function actionDelete()
+	{
+		
+		return $this->render('deletecontact');
+	}
+	
 	public function actionLetter()
 	{
 
