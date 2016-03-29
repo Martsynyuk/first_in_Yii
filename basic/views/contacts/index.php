@@ -51,8 +51,10 @@ use yii\helpers\Url;
 		<?= LinkPager::widget([
 				'pagination' => $pagination, 
 				'maxButtonCount' => MAXBUTTONCOUNT,
-				'firstPageLabel' => true,
-				'lastPageLabel' => true
+				'firstPageLabel' => '&#xf04a',
+				'lastPageLabel' => '&#xf04e',
+				'nextPageLabel' => '',
+				'prevPageLabel' => ''
 		]) ?>
 	</div>
 </div>

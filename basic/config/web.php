@@ -47,10 +47,11 @@ $config = [
             'showScriptName' => false,
         		'enableStrictParsing' => false,
             'rules' => [
-            		'/' => '/contacts/index', 
+            		'/contacts/index/<page:\d+>' => '/contacts/index/',
             		'/contacts/edit/<id:\d+>' => '/contacts/edit/',
             		'/contacts/view/<id:\d+>' => '/contacts/view/',
-            		'/contacts/delete/<id:\d+>' => '/contacts/delete/'
+            		'/contacts/delete/<id:\d+>' => '/contacts/delete/',
+            		'/' => '/contacts/index'
             ],
         ],
         

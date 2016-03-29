@@ -118,8 +118,10 @@ html, body{
 }
 .content .contact .pagination{
 	background: url(/img/bottom_menu.png) no-repeat;
-	width: 500px;
+	width: 490px;
+	height: 35px;
 	margin: 0 auto;
+	padding-top: 3px;
 	position: relative;
 }
 .content .contact_field {
@@ -130,6 +132,55 @@ html, body{
 	font-family: FontAwesome;
 	padding: 1px 10px;
 	border-radius: 12px;	
+}
+.content .pagination ul {
+	padding-left: 176px;
+}
+.content .pagination ul > li > a{
+	background: none;
+	border: 0;	
+	color: black;
+}
+.content .pagination ul > li > a:hover{
+	color: white;
+}
+.content .pagination .last, .content .pagination .next,
+.content .pagination .first, .content .pagination .prev
+{
+	position: absolute;
+}
+.content .pagination .last{
+	right: 200px;
+}
+.content .pagination .next{
+	background: url(/img/next.png) no-repeat;
+	width: 30px;
+	height: 10px;
+	right: 250px;
+	top: 14px;
+}
+.content .pagination .first a, .content .pagination .last a
+{
+	font-family: FontAwesome;
+	color: white;
+}
+.content .pagination .first{
+	left: 20px;
+}
+.content .pagination .prev{
+	background: url(/img/prew.png) no-repeat;
+	width: 70px;
+	height: 10px;
+	left: 75px;
+	top: 14px;
+}
+.content .pagination .active a{
+	color: white;
+	font-size: 16px;
+	width: 800;
+}
+.content .disabled{
+	display: none;
 }
 .main .footer{
 	position: absolute;
