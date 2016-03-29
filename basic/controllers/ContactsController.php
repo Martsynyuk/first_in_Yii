@@ -75,6 +75,11 @@ class ContactsController extends Controller
 			->where(['users_id' => Yii::$app->user->id, 'id' => Yii::$app->request->get('id')])
 			->one();
 		
+			if(!$contact)
+			{
+				$this->redirect('/');
+			}
+		
 		if($model->load(Yii::$app->request->post()) && $model->validate())
 		{
 			(new \yii\db\Query())->createCommand()->update('Information', [
@@ -100,6 +105,22 @@ class ContactsController extends Controller
 		}
 		
 		return $this->render('editcontact', ['model' => $model, 'contact' => $contact]);
+	}
+	
+	public function actionView()
+	{
+		$contact = (new \yii\db\Query())
+		->select('*')
+		->from('Information')
+		->where(['users_id' => Yii::$app->user->id, 'id' => Yii::$app->request->get('id')])
+		->one();
+		
+		if(!$contact)
+		{
+			$this->redirect('/');
+		}
+		
+		return $this->render('viewcontact', ['contact' => $contact]);
 	}
 	
 	public function actionLetter()
