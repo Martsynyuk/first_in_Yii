@@ -11,13 +11,19 @@ use app\models\Auth;
 Class UsersController extends Controller
 {
 	public $layout = 'main';
-		
-	public function actionAutorization()
+	
+	public function Authenticate()
 	{
 		if(!empty(Yii::$app->user->identity))
 		{
 			$this->redirect('/');
 		}
+	}
+		
+	public function actionAutorization()
+	{
+		
+		$this->authenticate();
 		
 		$model = new User();
 		$model->scenario = User::SCENARIO_LOGIN;
@@ -46,6 +52,8 @@ Class UsersController extends Controller
 	
 	public function actionRegistration()
 	{
+		$this->authenticate();
+		
 		$model = new User();
 		$model->scenario = User::SCENARIO_REGISTER;
 		

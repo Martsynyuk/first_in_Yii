@@ -9,9 +9,19 @@ use app\models\Information;
 
 class ContactsController extends Controller
 {
+	public function Authenticate()
+	{
+		if(empty(Yii::$app->user->identity))
+		{
+			$this->redirect('/users/autorization/');
+		}
+	}
 	
 	public function actionIndex()
 	{
+		
+		$this->authenticate();
+		
 		$query = Information::find()->where(['users_id' => Yii::$app->user->id]);
 		
 		$pagination = new Pagination([
@@ -36,6 +46,8 @@ class ContactsController extends Controller
 	
 	public function actionAddcontact()
 	{
+		$this->authenticate();
+		
 		$model = new Information();
 		
 		if($model->load(Yii::$app->request->post()) && $model->validate())
@@ -67,6 +79,8 @@ class ContactsController extends Controller
 	
 	public function actionEdit()
 	{
+		$this->authenticate();
+		
 		$model = new Information();
 		
 		$contact = (new \yii\db\Query())
@@ -109,6 +123,8 @@ class ContactsController extends Controller
 	
 	public function actionView()
 	{
+		$this->authenticate();
+		
 		$contact = (new \yii\db\Query())
 		->select('*')
 		->from('Information')
@@ -125,13 +141,38 @@ class ContactsController extends Controller
 	
 	public function actionDelete()
 	{
+		$this->authenticate();
 		
-		return $this->render('deletecontact');
 	}
 	
 	public function actionLetter()
 	{
+		$this->authenticate();
+		
+		$model = new Information();
 
-		return $this->render('letter');
+		return $this->render('letter', ['model' => $model]);
+	}
+	
+	public function actionSelect()
+	{
+		$this->authenticate();
+		
+		$model = new Information();
+		
+		$query = Information::find()->where(['users_id' => Yii::$app->user->id]);
+		
+		$pagination = new Pagination([
+				'defaultPageSize' => ROWLIMIT,
+				'totalCount' => $query->count(),
+		
+		]);
+		
+		$contacts = $query->orderBy('FirstName')
+		->offset($pagination->offset)
+		->limit($pagination->limit)
+		->all();
+		
+		return $this->render('select', ['model' => $model, 'contacts' => $contacts, 'pagination' => $pagination]);
 	}
 }

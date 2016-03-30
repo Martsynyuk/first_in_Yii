@@ -7,6 +7,8 @@ class Information extends ActiveRecord
 {
 	public $radio;
 	public $date;
+	public $letter;
+	public $checkbox;
 	
 	public function rules()
 	{
