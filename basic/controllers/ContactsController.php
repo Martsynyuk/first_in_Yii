@@ -19,7 +19,6 @@ class ContactsController extends Controller
 	
 	public function actionIndex()
 	{
-		
 		$this->authenticate();
 		
 		$query = Information::find()->where(['users_id' => Yii::$app->user->id]);
@@ -30,7 +29,9 @@ class ContactsController extends Controller
 				
 		]);
 		
-		$contacts = $query->orderBy('FirstName')
+		$sort = 'FirstName, LastName';
+		
+		$contacts = $query->orderBy($sort)
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
@@ -168,7 +169,9 @@ class ContactsController extends Controller
 		
 		]);
 		
-		$contacts = $query->orderBy('FirstName')
+		$sort = 'FirstName, LastName';
+		
+		$contacts = $query->orderBy($sort)
 		->offset($pagination->offset)
 		->limit($pagination->limit)
 		->all();

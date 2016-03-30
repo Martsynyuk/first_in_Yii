@@ -8,14 +8,23 @@ use yii\helpers\Url;
 <?php $this->params['menu'] = ['home', 'logout', 'addcontact', 'letter'] ?>
 
 <div class="contact">
+	<div id=delete_contact>
+		<span id="close">X</span> 
+		<span id="text"></span>
+		<span id="yes">Yes</span>
+		<span id="no">No</span>
+		<p id="countdown">windows close - <span></span></p>
+	</div>
 	<table class="table">
 		<tr class="table_top">
 			<th></th>
 			<th>First Name
-			
+				<span data-sort="FirstNameUp" class="active_sort">&#xf062</span>
+				<span data-sort="FirstNameDown" class="sort">&#xf063</span>
 			</th>
 			<th>Last Name
-			
+				<span data-sort="LastNameUp" class="active_sort">&#xf062</span>
+				<span data-sort="LastNameDown" class="sort">&#xf063</span>
 			</th>
 			<th>E-mail
 			

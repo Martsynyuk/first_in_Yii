@@ -48,6 +48,7 @@ $config = [
         		'enableStrictParsing' => false,
             'rules' => [
             		'/contacts/index/<page:\d+>' => '/contacts/index/',
+            		'/contacts/select/<page:\d+>' => '/contacts/select/',
             		'/contacts/edit/<id:\d+>' => '/contacts/edit/',
             		'/contacts/view/<id:\d+>' => '/contacts/view/',
             		'/contacts/delete/<id:\d+>' => '/contacts/delete/',

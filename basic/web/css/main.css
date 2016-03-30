@@ -55,6 +55,12 @@ html, body{
 	border-collapse: inherit;
 	margin-bottom: 0;
 }
+.content .contact .table .sort, .content .contact .table .active_sort{
+	font-family: FontAwesome;
+} 
+.content .contact .table .active_sort{
+	color: red;
+}
 .content .contact .table form{
 	margin: 0;
 	height: 10px;
@@ -226,4 +232,58 @@ html, body{
 }
 .claer{
 	clear: both;
+}
+#delete_contact{
+	display: none; 
+	width: 350px; 
+	height: 100px; 
+	border-radius: 5px;
+	border: 3px #000 solid;
+	background: #fff;
+	position: fixed; 
+	top: 45%; 
+	left: 50%; 
+	margin-top: -200px;
+	margin-left: -175px; 
+	z-index: 5; 
+	padding: 20px 10px;
+	color: black;
+}
+#delete_contact #close {
+	width: 14px;
+	height: 21px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	display: block;
+}
+#delete_contact  #text{
+	top: 50px;
+	position: absolute;
+}
+#delete_contact  #yes, #delete_contact #no{
+	bottom: 25px;
+	position: absolute;
+	font: 15px/20px Arial regular;
+	font-weight: 500;
+	width: 50px;
+	border-radius: 3px 7px;
+	height: 20px;
+	text-align: center;
+	background: gray;
+	color: white;
+	cursor: pointer;
+}
+#delete_contact  #yes{
+	left: 30%;
+}
+#delete_contact #no{
+	left: 50%;
+}
+#countdown{
+	display: none;
+	bottom: 10px;
+	right:10px;
+	position: absolute;
 }
