@@ -55,10 +55,12 @@ html, body{
 	border-collapse: inherit;
 	margin-bottom: 0;
 }
-.content .contact .table .sort, .content .contact .table .active_sort{
+.content .contact .table .sort, .content .contact .table .active_sortSecond, 
+.content .contact .table .active_sortFirst
+{
 	font-family: FontAwesome;
 } 
-.content .contact .table .active_sort{
+.content .contact .table .active_sortFirst, .content .contact .table .active_sortSecond{
 	color: red;
 }
 .content .contact .table form{

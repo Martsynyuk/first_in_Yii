@@ -1,11 +1,7 @@
 <?php
-
-use yii\helpers\Html;
 use yii\widgets\LinkPager;
 use yii\helpers\Url;
-
 ?>
-<?php $this->params['menu'] = ['home', 'logout', 'addcontact', 'letter'] ?>
 
 <div class="contact">
 	<div id=delete_contact>
@@ -19,12 +15,20 @@ use yii\helpers\Url;
 		<tr class="table_top">
 			<th></th>
 			<th>First Name
-				<span data-sort="FirstNameUp" class="active_sortFirst">&#xf062</span>
-				<span data-sort="FirstNameDown" class="sort">&#xf063</span>
+				<span data-sort="FirstNameUp" class="
+				<?= (Yii::$app->request->get('first') == 'FirstNameUp') ? 'active_sortFirst' : 'sort' ?>
+				">&#xf062</span>
+				<span data-sort="FirstNameDown" class="
+				<?= (Yii::$app->request->get('first') == 'FirstNameDown') ? 'active_sortFirst' : 'sort' ?>
+				">&#xf063</span>
 			</th>
 			<th>Last Name
-				<span data-sort="LastNameUp" class="active_sortSecond">&#xf062</span>
-				<span data-sort="LastNameDown" class="sort">&#xf063</span>
+				<span data-sort="LastNameUp" class="
+				<?= (Yii::$app->request->get('second') == 'LastNameUp') ? 'active_sortSecond' : 'sort' ?>
+				">&#xf062</span>
+				<span data-sort="LastNameDown" class="
+				<?= (Yii::$app->request->get('second') == 'LastNameDown') ? 'active_sortSecond' : 'sort' ?>
+				">&#xf063</span>
 			</th>
 			<th>E-mail
 			

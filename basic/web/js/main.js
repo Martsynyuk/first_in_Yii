@@ -4,23 +4,21 @@
 // pagination 
 
 $( document ).ready(function() {
-	
-	//main.method();
 
-	$('#delete_contact').on('click', '#close, #no', function(){
+	$('.content').on('click', '#close, #no', function(){
 		main.close_window_for_delete();
 	});
 	
-	$('#delete_contact').on('click', '#yes', function(){
+	$('.content').on('click', '#yes', function(){
 		main.delete_contact($(this).attr('data'));
 	});
 	
-	/*$('.cont, .contact').on('click', '.sort, active_sortFirst, active_sortSecond',  function(e) {
+	$('.content').on('click', '.sort, .active_sortFirst, .active_sortSecond',  function(e) {
 		main.sort($(this));
 		e.preventDefault();
 	});
 	
-	$('.contact').on('click', '.top a',  function(e) {
+	/*$('.contact').on('click', '.top a',  function(e) {
 		main.check_all($(this));
 		e.preventDefault();
 	});
@@ -29,67 +27,56 @@ $( document ).ready(function() {
 		main.check($(this));
 	});
 		
-	$('.cont .pagination ul>li a, .content').on('click', '.pagination input, .pagination a', function(e) {	
-		main.pagination($(this).attr('data'));
+	*/$('.cont .pagination ul>li a, .content').on('click', '.pagination a', function(e) {	
+		main.pagination($(this).data('page'));
 		e.preventDefault();
-	});*/
+	});
 	
-	$('.contact, .table, a.delete').on('click', 'a.delete', function(e) {
+	$('.content').on('click', 'span.delete', function(e) {
 		main.window_for_delete($(this));	
 		e.preventDefault();
 	});
 	
 });
 
-
 class Main {
 	
 	pagination(page)
 	{	
+		page = page +1;
 		
 		var url = [$('.container').data('class'), $('.container').data('method')];
 				
-		var sortFirst = $('.active_sortFirst').attr('data');
-		var sortSecond = $('.active_sortSecond').attr('data');
+		var sortFirst = $('.active_sortFirst').data('sort');
+		var sortSecond = $('.active_sortSecond').data('sort');
 		
-		if(url[1] == 'index')
-		{
-			history.pushState(null, null, '/' + page + '/');
-		}
-		else{
-			history.pushState(null, null, '/'+ url[0] + '/' + url[1] + '/' + page + '/');
-		}
-		
+		history.pushState(null, null, '/'+ url[0] + '/' + url[1] + '/' + page + '/');
+	
 		this.ajax(url, page, sortFirst, sortSecond);
 	}		
 	
 	sort(obj)
 	{
-		
+		console.log('asdasd');
 		var url = [$('.container').data('class'), $('.container').data('method')];
 		
-		var sorting = $(obj).attr('data');
-	
+		var sorting = $(obj).data('sort');
+				
 		if(sorting == 'FirstNameUp' || sorting == 'FirstNameDown')
 		{
 			var sortFirst = sorting;
-			var sortSecond = $('.active_sortSecond').attr('data');
+			var sortSecond = $('.active_sortSecond').data('sort');
 		}
 		else if(sorting == 'LastNameUp' || sorting == 'LastNameDown')
 		{
-			var sortFirst = $('.active_sortFirst').attr('data');
+			var sortFirst = $('.active_sortFirst').data('sort');
 			var sortSecond = sorting;
 		}
-	
-		var page = $('.page_active').attr('data');
+			
+		var page = $('.active a').data('page');
+		page = page + 1;
 		
-		if(url[1] == 'index')
-		{
-			history.pushState(null, null, '/' + page + '/');
-		}
-		else{
-			history.pushState(null, null, '/'+ url[0] + '/' + url[1] + '/' + page + '/');
-		}
+		history.pushState(null, null, '/'+ url[0] + '/' + url[1] + '/' + page + '/');
 		
 		this.ajax(url, page, sortFirst, sortSecond);
 	}
@@ -97,20 +84,19 @@ class Main {
 	
 	ajax(url, page, sortFirst, sortSecond)
 	{
-		
 		$.ajax({
 			type: 'get',
-			url: '/' + url[0] + '/ajax_' + url[1],
+			url: '/' + url[0] + '/' + url[1] + '_ajax',
 			data:{'page': page, 'first': sortFirst, 'second': sortSecond},
 			response:'html',
 			success: function(data){
-				$('.cont').empty();
-				$('.cont').append(data);
+				$('.content').empty();
+				$('.content').append(data);
 				$('.contact').empty();
 				$('.contact').append(data);
 			},
 			complete: function(){
-				parent:main.checked_checkbox();
+				//parent:main.checked_checkbox();
 			}
 		});
 	}
@@ -252,7 +238,3 @@ class Main {
 
 var main = new Main();
 
-main.method = function(){
-	
-	console.log('some text');
-}

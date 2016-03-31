@@ -33,6 +33,10 @@ use yii\base\Widget;
 </head>
 <body>
 <?php $this->beginBody() ?>
+
+<div data-class="<?= Yii::$app->controller->id ?>" 
+	data-method="<?= Yii::$app->controller->module->requestedAction->id ?>" 
+	class="container"></div>
 <main class="main container">
     <header class="top span12">
     	<a href="<?= Url::home(); ?>">

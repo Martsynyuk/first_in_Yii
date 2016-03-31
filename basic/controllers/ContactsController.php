@@ -9,12 +9,42 @@ use app\models\Information;
 
 class ContactsController extends Controller
 {
+	public $layout = 'main';
+	
 	public function Authenticate()
 	{
 		if(empty(Yii::$app->user->identity))
 		{
 			$this->redirect('/users/autorization/');
 		}
+	}
+	
+	public function actionIndex_ajax()
+	{
+		$this->Authenticate();
+		
+		$query = Information::find()->where(['users_id' => Yii::$app->user->id]);
+		
+		$pagination = new Pagination([
+				'defaultPageSize' => ROWLIMIT,
+				'totalCount' => $query->count(),
+		
+		]);
+			
+		$sort = $this->Sort_contacts();
+		
+		$contacts = $query->orderBy($sort)
+		->offset($pagination->offset)
+		->limit($pagination->limit)
+		->all();
+		
+		$i = 1; // count for contacts
+		if($pagination->getPage() == 1 or $pagination->getPage() > 1)
+		{
+			$i = ($pagination->getPage()+1) * ROWLIMIT - ROWLIMIT + 1;
+		}
+		
+		return $this->renderAjax('index_ajax', ['contacts' => $contacts, 'i' => $i, 'pagination' => $pagination ]);
 	}
 	
 	public function actionIndex()
@@ -30,6 +60,8 @@ class ContactsController extends Controller
 		]);
 		
 		$sort = 'FirstName, LastName';
+
+		$this->Sort_contacts();
 		
 		$contacts = $query->orderBy($sort)
             ->offset($pagination->offset)
@@ -159,6 +191,30 @@ class ContactsController extends Controller
 		return $this->render('letter', ['model' => $model]);
 	}
 	
+	public function actionSelect_ajax()
+	{
+		$this->Authenticate();
+		
+		$model = new Information();
+		
+		$query = Information::find()->where(['users_id' => Yii::$app->user->id]);
+		
+		$pagination = new Pagination([
+				'defaultPageSize' => ROWLIMIT,
+				'totalCount' => $query->count(),
+		
+		]);
+		
+		$sort = $this->Sort_contacts();
+		
+		$contacts = $query->orderBy($sort)
+		->offset($pagination->offset)
+		->limit($pagination->limit)
+		->all();
+		
+		return $this->renderAjax('select_ajax', ['model' => $model, 'contacts' => $contacts, 'pagination' => $pagination]);
+	}
+	
 	public function actionSelect()
 	{
 		$this->Authenticate();
@@ -181,5 +237,37 @@ class ContactsController extends Controller
 		->all();
 		
 		return $this->render('select', ['model' => $model, 'contacts' => $contacts, 'pagination' => $pagination]);
+	}
+	
+	public function Sort_contacts()
+	{
+		
+		if( Yii::$app->request->get('first') === 'FirstNameUp')
+		{
+			$sort_first = 'FirstName';
+		}
+		if( Yii::$app->request->get('first') === 'FirstNameDown'){
+				
+			$sort_first = 'FirstName DESC';
+		}
+		if( Yii::$app->request->get('second') === 'LastNameUp')
+		{
+			$sort_second = ', LastName';
+		}
+		if( Yii::$app->request->get('second') === 'LastNameDown')
+		{
+			$sort_second = ', LastName DESC';
+		}
+		
+		if(!empty($sort_first) && !empty($sort_second))
+		{	
+			$sort = $sort_first . $sort_second;
+		
+			return $sort;
+		}
+		else{
+			return false;
+		}
+		
 	}
 }

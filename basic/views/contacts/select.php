@@ -15,11 +15,11 @@ use yii\widgets\ActiveForm;
 				<span>All</span>
 			</th>
 			<th>First Name
-				<span data-sort="FirstNameUp" class="active_sort">&#xf062</span>
+				<span data-sort="FirstNameUp" class="active_sortFirst">&#xf062</span>
 				<span data-sort="FirstNameDown" class="sort">&#xf063</span>
 			</th>
 			<th>Last Name
-				<span data-sort="LastNameUp" class="active_sort">&#xf062</span>
+				<span data-sort="LastNameUp" class="active_sortSecond">&#xf062</span>
 				<span data-sort="LastNameDown" class="sort">&#xf063</span>
 			</th>
 			<th>E-mail
