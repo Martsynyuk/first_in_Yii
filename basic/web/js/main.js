@@ -18,23 +18,21 @@ $( document ).ready(function() {
 		e.preventDefault();
 	});
 	
-	/*$('.contact').on('click', '.top a',  function(e) {
+	$('.content').on('click', '.first span',  function(e) {
 		main.check_all($(this));
-		e.preventDefault();
 	});
 	
-	$('.contact').on('click', '.check', function(){
+	$('.content').on('click', '.check', function(){
 		main.check($(this));
 	});
 		
-	*/$('.cont .pagination ul>li a, .content').on('click', '.pagination a', function(e) {	
+	$('.cont .pagination ul>li a, .content').on('click', '.pagination a', function(e) {	
 		main.pagination($(this).data('page'));
 		e.preventDefault();
 	});
 	
 	$('.content').on('click', 'span.delete', function(e) {
 		main.window_for_delete($(this));	
-		e.preventDefault();
 	});
 	
 });
@@ -96,7 +94,7 @@ class Main {
 				$('.contact').append(data);
 			},
 			complete: function(){
-				//parent:main.checked_checkbox();
+				parent:main.checked_checkbox();
 			}
 		});
 	}
@@ -211,17 +209,17 @@ class Main {
 			}
 		 
 		}
-		
+				
 		var contact_id = $.cookie('select').split(', ');
 		contact_id = $.unique(contact_id)	
 		check = contact_id.join(', ');
-				
+			
 		$.cookie('select', check, {expires: 1, path: '/'});
 	}
 	
 	checked_checkbox()
 	{
-
+		
 		if($.cookie('select') != null)
 		{
 			var contacts_id = $.cookie('select').split(', ');

@@ -35,7 +35,7 @@ use yii\widgets\ActiveForm;
 			<td>
 				<?php $form = ActiveForm::begin(); ?>
 
-    		<?= $form->field($model, 'checkbox')->checkbox(['class' => 'checkbox', 'name' => $contact['id'], 'value' => $contact['id'], 'label' => '']) ?>
+    		<?= $form->field($model, 'checkbox')->checkbox(['data' => $contact['id'], 'class' => 'check', 'name' => $contact['id'], 'value' => $contact['Email'], 'label' => '']) ?>
 
 				<?php ActiveForm::end(); ?>
 			</td>
