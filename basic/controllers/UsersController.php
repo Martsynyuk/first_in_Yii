@@ -23,7 +23,7 @@ Class UsersController extends Controller
 	public function actionAutorization()
 	{
 		
-		$this->authenticate();
+		$this->Authenticate();
 		
 		$model = new User();
 		$model->scenario = User::SCENARIO_LOGIN;
@@ -52,7 +52,7 @@ Class UsersController extends Controller
 	
 	public function actionRegistration()
 	{
-		$this->authenticate();
+		$this->Authenticate();
 		
 		$model = new User();
 		$model->scenario = User::SCENARIO_REGISTER;

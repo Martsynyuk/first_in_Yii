@@ -19,7 +19,7 @@ class ContactsController extends Controller
 	
 	public function actionIndex()
 	{
-		$this->authenticate();
+		$this->Authenticate();
 		
 		$query = Information::find()->where(['users_id' => Yii::$app->user->id]);
 		
@@ -47,7 +47,7 @@ class ContactsController extends Controller
 	
 	public function actionAddcontact()
 	{
-		$this->authenticate();
+		$this->Authenticate();
 		
 		$model = new Information();
 		
@@ -80,7 +80,7 @@ class ContactsController extends Controller
 	
 	public function actionEdit()
 	{
-		$this->authenticate();
+		$this->Authenticate();
 		
 		$model = new Information();
 		
@@ -124,7 +124,7 @@ class ContactsController extends Controller
 	
 	public function actionView()
 	{
-		$this->authenticate();
+		$this->Authenticate();
 		
 		$contact = (new \yii\db\Query())
 		->select('*')
@@ -142,7 +142,7 @@ class ContactsController extends Controller
 	
 	public function actionDelete()
 	{
-		$this->authenticate();
+		$this->Authenticate();
 		
 		$id = (int)(Yii::$app->request->get('contact'));
 		
@@ -152,7 +152,7 @@ class ContactsController extends Controller
 	
 	public function actionLetter()
 	{
-		$this->authenticate();
+		$this->Authenticate();
 		
 		$model = new Information();
 
@@ -161,7 +161,7 @@ class ContactsController extends Controller
 	
 	public function actionSelect()
 	{
-		$this->authenticate();
+		$this->Authenticate();
 		
 		$model = new Information();
 		

@@ -99,7 +99,7 @@ class Main {
 	{
 		
 		$.ajax({
-			type: 'post',
+			type: 'get',
 			url: '/' + url[0] + '/ajax_' + url[1],
 			data:{'page': page, 'first': sortFirst, 'second': sortSecond},
 			response:'html',
@@ -108,9 +108,6 @@ class Main {
 				$('.cont').append(data);
 				$('.contact').empty();
 				$('.contact').append(data);
-			},
-			error: function(data){
-				alert('error')
 			},
 			complete: function(){
 				parent:main.checked_checkbox();
@@ -143,8 +140,8 @@ class Main {
 			type: 'get',
 			url: '/contacts/delete',
 			data:{'contact': contact[0]},
-			success: function(data){
-				console.log(data);
+			success: function(){
+				
 				$('#yes').css('display', 'none');
 				$('#no').css('display', 'none');
 				$('#text').text('Contact ' + contact[1] + ' deleted');
