@@ -144,6 +144,10 @@ class ContactsController extends Controller
 	{
 		$this->authenticate();
 		
+		$id = (int)(Yii::$app->request->get('contact'));
+		
+		(new \yii\db\Query())->createCommand()->delete('Information', 
+				['users_id' => Yii::$app->user->identity['id'], 'id' => $id])->execute();
 	}
 	
 	public function actionLetter()

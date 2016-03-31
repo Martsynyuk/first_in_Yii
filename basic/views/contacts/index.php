@@ -47,7 +47,7 @@ use yii\helpers\Url;
 							<td>
 								<a class="edit" href="<?= Url::to(['/contacts/edit/', 'id' => $contact['id']]) ?>">edit</a> 
 								<a class="view" href="<?= Url::to(['/contacts/view/', 'id' => $contact['id']]) ?>">view</a>
-								<a class="delete" href="<?= Url::to(['/contacts/delete/', 'id' => $contact['id']]) ?>"></a>
+								<a data="<?= $contact['id'] . ', ' . $contact['FirstName']?>" class="delete" href="<?= Url::to(['/contacts/delete/', 'id' => $contact['id']]) ?>"></a>
 							</td>
 				
 					<?php $i++;?>

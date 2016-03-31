@@ -25,6 +25,11 @@ use yii\base\Widget;
     <?= Html::cssFile('@web/css/bootstrap.css') ?>
     <?= Html::cssFile('@web/css/font-awesome.css') ?>
     <?= Html::cssFile('@web/css/main.css') ?>
+    
+    <?= Html::jsFile('@web/js/jquery-2.2.0.js') ?>
+    <?= Html::jsFile('@web/js/jquery.cookie.js') ?>
+    <?= Html::jsFile('@web/js/main.js') ?>
+    
 </head>
 <body>
 <?php $this->beginBody() ?>
