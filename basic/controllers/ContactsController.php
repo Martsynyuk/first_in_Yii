@@ -125,6 +125,7 @@ class ContactsController extends Controller
 		$this->Authenticate();
 		
 		$model = new Information();
+		$model->radio = 'Work';
 		
 		$contact = (new \yii\db\Query())
 			->select('*')

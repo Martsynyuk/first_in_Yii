@@ -20,7 +20,7 @@ class Information extends ActiveRecord
 				['Home', 'match', 'pattern' => '/^[+0-9][0-9-]+$/'], 
 				['date', 'required'],
 				['date', 'safe'],
-				['date', 'date', 'format' => 'php:d-m-Y']
+				['date', 'date', 'format' => 'php:Y-m-d', 'message' => 'wrong date']
 		];
 	}
 }
