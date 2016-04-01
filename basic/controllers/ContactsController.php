@@ -52,6 +52,14 @@ class ContactsController extends Controller
 	{
 		$this->Authenticate();
 		
+		if(!empty(Yii::$app->request->cookies->getValue('mail')))
+		{
+			Yii::$app->response->cookies->add(new \yii\web\Cookie([
+					'name' => 'mail',
+					'value' => ''
+			]));
+		}
+		
 		$query = Information::find()->where(['users_id' => Yii::$app->user->id]);
 		
 		$pagination = new Pagination([
@@ -197,7 +205,7 @@ class ContactsController extends Controller
 				$mail[] = (new \yii\db\Query())
 					->select('email')
 					->from('Information')
-					->where(['users_id' => Yii::$app->user->id, 'id' => $val])
+					->where(['users_id' => Yii::$app->user->id, 'id' => (int)($val)])
 					->one();
 			}
 			
@@ -219,7 +227,7 @@ class ContactsController extends Controller
 
 		if(!empty(Yii::$app->request->post()['Information']['letter']))
 		{
-			$new_mail = $this->Array_diff(explode(', ', Yii::$app->request->post()['Information']['letter']), 
+			$new_mail = $this->Array_diff(explode(', ', Yii::$app->request->post()['Information']['letter']), /// array diff selected - writed
 					explode(', ', Yii::$app->request->cookies->getValue('mail')));
 		}
 		

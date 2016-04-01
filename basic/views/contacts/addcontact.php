@@ -51,21 +51,7 @@ use yii\helpers\Url;
     <?= $form->field($model, 'Country')->label('Country :') ?>
   </li>
   <li>
-  	<?php for($i = 1; $i <= 31; $i++) : ?>
-  	<?php $day[$i] = $i ?>
-  	<?php endfor; ?>
-    <?= $form->field($model, 'date')->dropDownList($day, ['name' => 'day'])->label('BirthDate :');?>	
-    
-    <?php for($i = 1; $i <= 12; $i++) : ?>
-  	<?php $month[$i] = $i ?>
-  	<?php endfor; ?>	
-  	<?= $form->field($model, 'date')->dropDownList($month, ['name' => 'month'])->label('');?>	
-  	
-  	<?php for($i = idate("Y")-100; $i <= idate("Y")-18; $i++) : ?>
-		<?php $year[$i] = $i ?>						
-		<?php endfor; ?>
-		<?= $form->field($model, 'date')->dropDownList($year, ['name' => 'year'])->label('');?>						
-		
+		<?= $form->field($model, 'date')->label('BirthDate :');?>						
   </li>
 </ul>  
     <div class="form-group">
