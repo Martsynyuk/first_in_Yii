@@ -16,11 +16,11 @@ class Information extends ActiveRecord
 				
 				[['FirstName', 'LastName', 'Email'], 'required'],
 				['Email', 'email'],
-				[['Zip'], 'integer'],
+				['Zip', 'integer'],
 				['Home', 'match', 'pattern' => '/^[+0-9][0-9-]+$/'], 
 				['date', 'required'],
 				['date', 'safe'],
-				['date', 'date', 'format' => 'd-m-yyyy']
+				['date', 'date', 'format' => 'php:d-m-Y']
 		];
 	}
 }

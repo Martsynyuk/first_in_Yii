@@ -92,6 +92,8 @@ class ContactsController extends Controller
 		
 		$model = new Information();
 		
+		$model->radio = 'Work';
+		
 		if($model->load(Yii::$app->request->post()) && $model->validate())
 		{
 			(new \yii\db\Query())->createCommand()->insert('Information', [
@@ -108,8 +110,7 @@ class ContactsController extends Controller
 					'State' => Yii::$app->request->post()['Information']['State'],
 					'Zip' => Yii::$app->request->post()['Information']['Zip'],
 					'Country' => Yii::$app->request->post()['Information']['Country'],
-					'BirthDate' => Yii::$app->request->post()['year'] . '-' . Yii::$app->request->post()['month'] . '-'
-						. Yii::$app->request->post()['day'],
+					'BirthDate' => Yii::$app->request->post()['Information']['date'],
 					'Telephone' => ''
 			])->execute();
 			
