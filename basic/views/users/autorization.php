@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'password')->passwordInput()->label('Password :') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton('Submit', ['class' => 'btn btn-inverse']) ?>
     </div>
 
 	<?php ActiveForm::end(); ?>
