@@ -220,7 +220,11 @@ html, body{
 	height: 300px;
 	margin: 0 auto;
 }
-.letter .placeholder{
+.content .letter  a{
+	font-family: FontAwesome;
+	color: white;
+}
+.content .letter .placeholder{
 	max-width: 450px;
 	max-height: 100px;
 }

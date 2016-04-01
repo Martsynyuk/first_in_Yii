@@ -6,6 +6,7 @@ use Yii;
 use yii\web\Controller;
 use yii\data\Pagination;
 use app\models\Information;
+use yii\base\Request;
 
 class ContactsController extends Controller
 {
@@ -186,6 +187,42 @@ class ContactsController extends Controller
 	{
 		$this->Authenticate();
 		
+		if(!empty($_COOKIE['select']))
+		{
+			$contact_id = explode(', ', $_COOKIE['select']);
+			setcookie('select', '' , strtotime("12 hours"), '/');
+			
+			foreach ($contact_id as $val)
+			{		
+				$mail[] = (new \yii\db\Query())
+					->select('email')
+					->from('Information')
+					->where(['users_id' => Yii::$app->user->id, 'id' => $val])
+					->one();
+			}
+			
+			foreach ($mail as $val)
+			{
+				foreach ($val as $value)
+				{
+					$mails[] = $value;
+				}
+			}
+			
+			$mails = implode(', ', $mails);
+			
+			Yii::$app->response->cookies->add(new \yii\web\Cookie([
+					'name' => 'mail',
+					'value' => $mails
+			]));
+		}		
+
+		if(!empty(Yii::$app->request->post()['Information']['letter']))
+		{
+			$new_mail = $this->Array_diff(explode(', ', Yii::$app->request->post()['Information']['letter']), 
+					explode(', ', Yii::$app->request->cookies->getValue('mail')));
+		}
+		
 		$model = new Information();
 
 		return $this->render('letter', ['model' => $model]);
@@ -269,5 +306,12 @@ class ContactsController extends Controller
 			return false;
 		}
 		
+	}
+	
+	public function Array_diff($array1, $array2)
+	{
+		$array = array_diff($array1, $array2);
+		
+		return $array;
 	}
 }
