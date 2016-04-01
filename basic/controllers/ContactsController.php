@@ -12,6 +12,12 @@ class ContactsController extends Controller
 {
 	public $layout = 'main';
 	
+	public function beforeAction($action)
+	{
+		$this->Authenticate();
+		return true;
+	}
+	
 	public function Authenticate()
 	{
 		if(empty(Yii::$app->user->identity))
@@ -22,7 +28,6 @@ class ContactsController extends Controller
 	
 	public function actionIndex_ajax()
 	{
-		$this->Authenticate();
 		
 		$query = Information::find()->where(['users_id' => Yii::$app->user->id]);
 		
@@ -50,8 +55,7 @@ class ContactsController extends Controller
 	
 	public function actionIndex()
 	{
-		$this->Authenticate();
-		
+			
 		if(!empty(Yii::$app->request->cookies->getValue('mail')))
 		{
 			Yii::$app->response->cookies->add(new \yii\web\Cookie([
@@ -88,7 +92,6 @@ class ContactsController extends Controller
 	
 	public function actionAddcontact()
 	{
-		$this->Authenticate();
 		
 		$model = new Information();
 		
@@ -122,7 +125,6 @@ class ContactsController extends Controller
 	
 	public function actionEdit()
 	{
-		$this->Authenticate();
 		
 		$model = new Information();
 		$model->radio = 'Work';
@@ -167,7 +169,6 @@ class ContactsController extends Controller
 	
 	public function actionView()
 	{
-		$this->Authenticate();
 		
 		$contact = (new \yii\db\Query())
 		->select('*')
@@ -185,7 +186,6 @@ class ContactsController extends Controller
 	
 	public function actionDelete()
 	{
-		$this->Authenticate();
 		
 		$id = (int)(Yii::$app->request->get('contact'));
 		
@@ -195,7 +195,6 @@ class ContactsController extends Controller
 	
 	public function actionLetter()
 	{
-		$this->Authenticate();
 		
 		if(!empty($_COOKIE['select']))
 		{
@@ -240,7 +239,6 @@ class ContactsController extends Controller
 	
 	public function actionSelect_ajax()
 	{
-		$this->Authenticate();
 		
 		$model = new Information();
 		
@@ -264,7 +262,6 @@ class ContactsController extends Controller
 	
 	public function actionSelect()
 	{
-		$this->Authenticate();
 		
 		$model = new Information();
 		

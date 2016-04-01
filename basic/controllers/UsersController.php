@@ -12,6 +12,12 @@ Class UsersController extends Controller
 {
 	public $layout = 'main';
 	
+	public function beforeAction($action)
+	{
+		$this->Authenticate();
+		return true;
+	}
+	
 	public function Authenticate()
 	{
 		if(!empty(Yii::$app->user->identity))
@@ -22,8 +28,6 @@ Class UsersController extends Controller
 		
 	public function actionAutorization()
 	{
-		
-		$this->Authenticate();
 		
 		$model = new User();
 		$model->scenario = User::SCENARIO_LOGIN;
@@ -52,7 +56,6 @@ Class UsersController extends Controller
 	
 	public function actionRegistration()
 	{
-		$this->Authenticate();
 		
 		$model = new User();
 		$model->scenario = User::SCENARIO_REGISTER;
