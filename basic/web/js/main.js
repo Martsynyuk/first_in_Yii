@@ -137,7 +137,7 @@ class Main {
 				    if(startFrom <= 0) {
 				        clearInterval(timer);
 				        $('#delete_contact').css('display', 'none');
-				        //parent:main.pagination($('.page_active').text());
+				        parent:main.pagination($('.page_active').text());
 				    }
 				},1000);
 	

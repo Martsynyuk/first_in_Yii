@@ -92,14 +92,12 @@ class ContactsController extends Controller
 	
 	public function actionAdd()
 	{
-		
-		//var_dump(Yii::$app->request->post()['Information']);
-		//var_dump($this->Select_telephone());
 		$model = new Information();
 		$model->radio = 'Work';
 		
 		if($model->load(Yii::$app->request->post()) && $model->validate())
 		{
+			
 			(new \yii\db\Query())->createCommand()->insert('Information', [
 					'users_id' => Yii::$app->user->identity['id'],
 					'FirstName' => Yii::$app->request->post()['Information']['FirstName'],
@@ -140,6 +138,19 @@ class ContactsController extends Controller
 			{
 				$this->redirect('/');
 			}
+			
+		switch ($contact['Telephone'])
+		{
+			case $contact['Home']:
+				$model->radio = 'Home';
+				break;
+			case $contact['Work']:
+				$madel->radio = 'Work';
+				break;
+			case $contact['Cell']: 
+				$model->radio = 'Cell';
+				break;
+		}
 		
 		if($model->load(Yii::$app->request->post()) && $model->validate())
 		{
@@ -156,9 +167,8 @@ class ContactsController extends Controller
 					'State' => Yii::$app->request->post()['Information']['State'],
 					'Zip' => Yii::$app->request->post()['Information']['Zip'],
 					'Country' => Yii::$app->request->post()['Information']['Country'],
-					'BirthDate' => Yii::$app->request->post()['year'] . '-' . Yii::$app->request->post()['month'] . '-'
-					. Yii::$app->request->post()['day'],
-					'Telephone' => ''
+					'BirthDate' => Yii::$app->request->post()['Information']['date'],
+					'Telephone' => $this->Select_telephone()
 			], ['id' => Yii::$app->request->get('id')])
 			->execute();
 				
@@ -327,7 +337,7 @@ class ContactsController extends Controller
 	public function Select_telephone()
 	{
 		$telephone = '';
-		
+
 		switch (Yii::$app->request->post()['Information']['radio'])
 		{
 			case 'Home':
@@ -343,4 +353,5 @@ class ContactsController extends Controller
 		
 		return $telephone;
 	}
+	
 }
