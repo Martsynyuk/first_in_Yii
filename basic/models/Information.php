@@ -14,7 +14,7 @@ class Information extends ActiveRecord
 	{
 		return [
 				
-				//[['FirstName', 'LastName', 'Email', 'BirthDate', date], 'required'],
+				[['FirstName', 'LastName', 'Email', 'BirthDate', 'date'], 'required'],
 				[['FirstName', 'LastName'], 'match', 'pattern' => '/^[A-Z][a-z ]+$/'],
 				['Email', 'email'],
 				['Zip', 'integer'],

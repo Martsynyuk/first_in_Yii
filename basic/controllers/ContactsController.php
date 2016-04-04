@@ -93,12 +93,12 @@ class ContactsController extends Controller
 	public function actionAdd()
 	{
 		
-		var_dump(Yii::$app->request->post()['Information']['radio']);
-		//var_dump($_POST);
+		//var_dump(Yii::$app->request->post()['Information']);
+		//var_dump($this->Select_telephone());
 		$model = new Information();
 		$model->radio = 'Work';
 		
-		/*if($model->load(Yii::$app->request->post()) && $model->validate())
+		if($model->load(Yii::$app->request->post()) && $model->validate())
 		{
 			(new \yii\db\Query())->createCommand()->insert('Information', [
 					'users_id' => Yii::$app->user->identity['id'],
@@ -115,11 +115,11 @@ class ContactsController extends Controller
 					'Zip' => Yii::$app->request->post()['Information']['Zip'],
 					'Country' => Yii::$app->request->post()['Information']['Country'],
 					'BirthDate' => Yii::$app->request->post()['Information']['date'],
-					'Telephone' => ''
+					'Telephone' => $this->Select_telephone()
 			])->execute();
 			
 			$this->redirect('/');
-		}*/
+		}
 
 		return $this->render('addcontact', ['model' => $model]);
 	}
@@ -326,6 +326,21 @@ class ContactsController extends Controller
 	
 	public function Select_telephone()
 	{
+		$telephone = '';
 		
+		switch (Yii::$app->request->post()['Information']['radio'])
+		{
+			case 'Home':
+				$telephone = Yii::$app->request->post()['Information']['Home'];
+				break;
+			case 'Work':
+				$telephone =Yii::$app->request->post()['Information']['Work'];
+				break;
+			case 'Cell':
+				$telephone = Yii::$app->request->post()['Information']['Cell'];
+				break;
+		}
+		
+		return $telephone;
 	}
 }
