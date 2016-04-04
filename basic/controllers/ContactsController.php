@@ -94,7 +94,6 @@ class ContactsController extends Controller
 	{
 		
 		$model = new Information();
-		
 		$model->radio = 'Work';
 		
 		if($model->load(Yii::$app->request->post()) && $model->validate())

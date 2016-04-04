@@ -21,16 +21,16 @@ use yii\helpers\Url;
     <?= $form->field($model, 'Email')->input('email', ['value' => $contact['Email']])->label('Email :') ?>
   </li>
   <li>
-    <?= $form->field($model, 'Home')->input('text', ['value' => $contact['Home']])->label('Home :' .
-    		$form->field($model, 'radio')->radio(['name' => 'radio', 'value' => 'Home', 'label' => '']))?>
+  	<?= $form->field($model, 'radio')->radio(['name' => 'radio', 'value' => 'Home', 'label' => 'Home :']) ?>
+    <?= $form->field($model, 'Home')->input('text', ['value' => $contact['Home']])->label('Home :') ?>
   </li>
   <li>
-    <?= $form->field($model, 'Work')->input('text', ['value' => $contact['Work']])->label('Work :' .
-    		$form->field($model, 'radio')->radio(['name' => 'radio', 'value' => 'Work', 'label' => ''])) ?>
+  	<?= $form->field($model, 'radio')->radio(['name' => 'radio', 'value' => 'Work', 'label' => 'Work :']) ?>
+    <?= $form->field($model, 'Work')->input('text', ['value' => $contact['Work']])->label('Work :') ?>
   </li>
   <li>
-    <?= $form->field($model, 'Cell')->input('text', ['value' => $contact['Cell']])->label('Cell :' .
-    		$form->field($model, 'radio')->radio(['name' => 'radio', 'value' => 'Cell', 'label' => ''])) ?>
+  	<?= $form->field($model, 'radio')->radio(['name' => 'radio', 'value' => 'Cell', 'label' => 'Cell :']) ?>
+    <?= $form->field($model, 'Cell')->input('text', ['value' => $contact['Cell']])->label('') ?>
   </li>
   <li>
     <?= $form->field($model, 'Adress1')->input('text', ['value' => $contact['Adress1']])->label('Adress1 :') ?>
@@ -51,26 +51,7 @@ use yii\helpers\Url;
     <?= $form->field($model, 'Country')->input('text', ['value' => $contact['Country']])->label('Country :') ?>
   </li>
 	  <li>
-	  	<?php $birthdate = (date_parse ( $contact['BirthDate'] ));?>
-			<?php $day[$birthdate['day']] = $birthdate['day']?>
-			<?php $month[$birthdate['month']] = $birthdate['month']?>
-			<?php $year[$birthdate['year']] = $birthdate['year']?>
-			
-	  	<?php for($i = 1; $i <= 31; $i++) : ?>
-	  	<?php $day[$i] = $i ?>
-	  	<?php endfor; ?>
-	    <?= $form->field($model, 'date')->dropDownList($day, ['name' => 'day'])->label('BirthDate :');?>	
-	    
-	    <?php for($i = 1; $i <= 12; $i++) : ?>
-	  	<?php $month[$i] = $i ?>
-	  	<?php endfor; ?>	
-	  	<?= $form->field($model, 'date')->dropDownList($month, ['name' => 'month'])->label('');?>	
-	  	
-	  	<?php for($i = idate("Y")-100; $i <= idate("Y")-18; $i++) : ?>
-			<?php $year[$i] = $i ?>						
-			<?php endfor; ?>
-			<?= $form->field($model, 'date')->dropDownList($year, ['name' => 'year'])->label('');?>						
-			
+	  	<?= $form->field($model, 'date')->input('text', ['placeholder' => 'Year-month-day'])->label('BirthDate :');?>
 	  </li>
 </ul>  
     <div class="form-group">
