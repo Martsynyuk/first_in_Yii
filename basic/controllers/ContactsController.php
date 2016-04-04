@@ -90,13 +90,15 @@ class ContactsController extends Controller
 		return $this->render('index', ['contacts' => $contacts, 'i' => $i, 'pagination' => $pagination ]);
 	}
 	
-	public function actionAddcontact()
+	public function actionAdd()
 	{
 		
+		var_dump(Yii::$app->request->post()['Information']['radio']);
+		//var_dump($_POST);
 		$model = new Information();
 		$model->radio = 'Work';
 		
-		if($model->load(Yii::$app->request->post()) && $model->validate())
+		/*if($model->load(Yii::$app->request->post()) && $model->validate())
 		{
 			(new \yii\db\Query())->createCommand()->insert('Information', [
 					'users_id' => Yii::$app->user->identity['id'],
@@ -117,7 +119,7 @@ class ContactsController extends Controller
 			])->execute();
 			
 			$this->redirect('/');
-		}
+		}*/
 
 		return $this->render('addcontact', ['model' => $model]);
 	}
@@ -194,6 +196,7 @@ class ContactsController extends Controller
 	
 	public function actionLetter()
 	{
+		$mails = NULL;
 		
 		if(!empty($_COOKIE['select']))
 		{
@@ -233,7 +236,7 @@ class ContactsController extends Controller
 		
 		$model = new Information();
 
-		return $this->render('letter', ['model' => $model]);
+		return $this->render('letter', ['model' => $model, 'mails' => $mails]);
 	}
 	
 	public function actionSelect_ajax()
@@ -319,5 +322,10 @@ class ContactsController extends Controller
 		$array = array_diff($array1, $array2);
 		
 		return $array;
+	}
+	
+	public function Select_telephone()
+	{
+		
 	}
 }

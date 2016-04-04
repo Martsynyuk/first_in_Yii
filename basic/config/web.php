@@ -42,10 +42,11 @@ $config = [
         ],
     		'assetManager' => [
     				'bundles' => [
-    						'yii\web\JqueryAsset' => [
+    						'yii\web\JqueryAsset' => false,
+    						/*'yii\web\JqueryAsset' => [
     								'sourcePath' => null,
     								'js' => ['/js/jquery.cookie.js'] 
-    						],
+    						],*/
     				],
     			],
         'db' => require(__DIR__ . '/db.php'),
