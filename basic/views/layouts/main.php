@@ -29,7 +29,7 @@ use yii\base\Widget;
     <?= Html::jsFile('@web/js/jquery-2.2.0.js') ?>
     <?= Html::jsFile('@web/js/main.js') ?>
     <?= Html::jsFile('@web/js/jquery.cookie.js') ?>
-    
+ 
 </head>
 <body>
 <?php $this->beginBody() ?>

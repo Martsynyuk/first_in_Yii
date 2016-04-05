@@ -21,15 +21,15 @@ use yii\helpers\Url;
     <?= $form->field($model, 'Email')->input('email', ['value' => $contact['Email']])->label('Email :') ?>
   </li>
   <li>
-  	<?= $form->field($model, 'radio')->radio(['value' => 'Home', 'label' => 'Home :', 'uncheck' => null]) ?>
-    <?= $form->field($model, 'Home')->input('text', ['value' => $contact['Home']])->label('Home :') ?>
+  	<?= $form->field($model, 'radio')->radio(['class' => 'radio', 'value' => 'Home', 'label' => 'Home :', 'uncheck' => null]) ?>
+    <?= $form->field($model, 'Home')->input('text', ['value' => $contact['Home']])->label('') ?>
   </li>
   <li>
-  	<?= $form->field($model, 'radio')->radio(['value' => 'Work', 'label' => 'Work :', 'uncheck' => null]) ?>
-    <?= $form->field($model, 'Work')->input('text', ['value' => $contact['Work']])->label('Work :') ?>
+  	<?= $form->field($model, 'radio')->radio(['class' => 'radio', 'value' => 'Work', 'label' => 'Work :', 'uncheck' => null]) ?>
+    <?= $form->field($model, 'Work')->input('text', ['value' => $contact['Work']])->label('') ?>
   </li>
   <li>
-  	<?= $form->field($model, 'radio')->radio(['value' => 'Cell', 'label' => 'Cell :', 'uncheck' => null]) ?>
+  	<?= $form->field($model, 'radio')->radio(['class' => 'radio', 'value' => 'Cell', 'label' => 'Cell :', 'uncheck' => null]) ?>
     <?= $form->field($model, 'Cell')->input('text', ['value' => $contact['Cell']])->label('') ?>
   </li>
   <li>

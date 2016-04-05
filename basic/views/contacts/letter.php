@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'letter')->textarea(['name' => 'text', 'placeholder' => 'write some text', 'class' => 'placeholder'])->label('') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Add', ['class' => 'btn btn-inverse']) ?>
+        <?= Html::submitButton('Add letter', ['class' => 'btn btn-inverse']) ?>
     </div>
 
 	<?php ActiveForm::end(); ?>

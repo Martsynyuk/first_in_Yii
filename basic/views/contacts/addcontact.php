@@ -21,15 +21,15 @@ use yii\helpers\Url;
     <?= $form->field($model, 'Email')->label('Email :') ?>
   </li>
   <li>
-  	<?= $form->field($model, 'radio')->radio(['type' => 'radio', 'value' => 'Home', 'label' => 'Home :', 'uncheck' => null])?>
+  	<?= $form->field($model, 'radio')->radio(['class' => 'radio', 'type' => 'radio', 'value' => 'Home', 'label' => 'Home :', 'uncheck' => null])?>
     <?= $form->field($model, 'Home')->label('') ?>
   </li>
   <li>
-  	<?=	$form->field($model, 'radio')->radio(['type' => 'radio', 'value' => 'Work', 'label' => 'Work :', 'uncheck' => null ]) ?>
+  	<?=	$form->field($model, 'radio')->radio(['class' => 'radio', 'type' => 'radio', 'value' => 'Work', 'label' => 'Work :', 'uncheck' => null ]) ?>
     <?= $form->field($model, 'Work')->label('') ?>
   </li>
   <li>
-  	<?= $form->field($model, 'radio')->radio(['type' => 'radio', 'value' => 'Cell', 'label' => 'Cell :', 'uncheck' => null]) ?>
+  	<?= $form->field($model, 'radio')->radio(['class' => 'radio', 'type' => 'radio', 'value' => 'Cell', 'label' => 'Cell :', 'uncheck' => null]) ?>
     <?= $form->field($model, 'Cell')->label('') ?>
    
   </li>

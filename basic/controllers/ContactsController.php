@@ -139,18 +139,18 @@ class ContactsController extends Controller
 				$this->redirect('/');
 			}
 			
-		switch ($contact['Telephone'])
-		{
-			case $contact['Home']:
-				$model->radio = 'Home';
-				break;
-			case $contact['Work']:
-				$madel->radio = 'Work';
-				break;
-			case $contact['Cell']: 
-				$model->radio = 'Cell';
-				break;
-		}
+			switch ($contact['Telephone'])
+			{
+				case $contact['Home']:
+					$model->radio = 'Home';
+					break;
+				case $contact['Work']:
+					$model->radio = 'Work';
+					break;
+				case $contact['Cell']: 
+					$model->radio = 'Cell';
+					break;
+			}
 		
 		if($model->load(Yii::$app->request->post()) && $model->validate())
 		{
