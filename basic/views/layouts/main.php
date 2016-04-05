@@ -22,10 +22,10 @@ use yii\base\Widget;
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?>project</title>
     <?php $this->head() ?>
-
+		<?php AppAsset::register($this);?>
 </head>
 <body>
-<?php AppAsset::register($this);?>
+
 <?php $this->beginBody() ?>
 
 <div data-class="<?= Yii::$app->controller->id ?>" 

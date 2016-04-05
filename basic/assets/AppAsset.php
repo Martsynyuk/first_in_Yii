@@ -23,7 +23,7 @@ class AppAsset extends AssetBundle
     		'/css/main.css'
     ];
     public $js = [
-     		'/js/jquery-2.2.0.js',
+     		//'/js/jquery-2.2.0.js',
     		'/js/main.js',
     		'/js/jquery.cookie.js'
     ];
