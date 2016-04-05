@@ -50,6 +50,11 @@ $config = [
     						
     				],
     			],*/
+    		'assetManager' => [
+    				'assetMap' => [
+    						'jquery.js' => '/js/jquery-2.2.0.js',
+    				],
+    		],
         'db' => require(__DIR__ . '/db.php'),
         
         'urlManager' => [
