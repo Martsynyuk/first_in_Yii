@@ -40,7 +40,7 @@ $config = [
                 ],
             ],
         ],
-    		'assetManager' => [
+    		/*'assetManager' => [
     				'bundles' => [
     						'yii\web\JqueryAsset' => [
     								'sourcePath' => null,
@@ -49,7 +49,7 @@ $config = [
     						],
     						
     				],
-    			],
+    			],*/
         'db' => require(__DIR__ . '/db.php'),
         
         'urlManager' => [

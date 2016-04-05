@@ -22,16 +22,10 @@ use yii\base\Widget;
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?>project</title>
     <?php $this->head() ?>
-    <?= Html::cssFile('@web/css/bootstrap.css') ?>
-    <?= Html::cssFile('@web/css/font-awesome.css') ?>
-    <?= Html::cssFile('@web/css/main.css') ?>
-    
-    <?= Html::jsFile('@web/js/jquery-2.2.0.js') ?>
-    <?= Html::jsFile('@web/js/main.js') ?>
-    <?= Html::jsFile('@web/js/jquery.cookie.js') ?>
- 
+
 </head>
 <body>
+<?php AppAsset::register($this);?>
 <?php $this->beginBody() ?>
 
 <div data-class="<?= Yii::$app->controller->id ?>" 
