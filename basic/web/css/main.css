@@ -52,6 +52,7 @@ html, body{
 	left: 170px;
 	bottom: 20px;
 	border-radius: 20px 8px 20px 8px;
+	outline: none;
 }
 .main .content .content_autorization span{
 	display: block;
@@ -246,6 +247,7 @@ html, body{
 	font-family: FontAwesome;
 	padding: 1px 10px;
 	border-radius: 12px;	
+	outline: none;
 }
 .content .contact_field span{
 	float: left;
