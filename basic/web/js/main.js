@@ -84,7 +84,7 @@ class Main {
 	{
 		$.ajax({
 			type: 'get',
-			url: '/' + url[0] + '/' + url[1] + '_ajax',
+			url: '/' + url[0] + '/' + url[1], // + '_ajax',
 			data:{'page': page, 'first': sortFirst, 'second': sortSecond},
 			response:'html',
 			success: function(data){

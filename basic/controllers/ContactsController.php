@@ -25,45 +25,10 @@ class ContactsController extends Controller
 			$this->redirect('/users/autorization/');
 		}
 	}
-	
-	public function actionIndex_ajax()
-	{
-		
-		$query = Information::find()->where(['users_id' => Yii::$app->user->id]);
-		
-		$pagination = new Pagination([
-				'defaultPageSize' => ROWLIMIT,
-				'totalCount' => $query->count(),
-		
-		]);
-			
-		$sort = $this->Sort_contacts();
-		
-		$contacts = $query->orderBy($sort)
-		->offset($pagination->offset)
-		->limit($pagination->limit)
-		->all();
-		
-		$i = 1; // count for contacts
-		if($pagination->getPage() == 1 or $pagination->getPage() > 1)
-		{
-			$i = ($pagination->getPage()+1) * ROWLIMIT - ROWLIMIT + 1;
-		}
-		
-		return $this->renderAjax('index_ajax', ['contacts' => $contacts, 'i' => $i, 'pagination' => $pagination ]);
-	}
-	
+
 	public function actionIndex()
 	{
 			
-		if(!empty(Yii::$app->request->cookies->getValue('mail')))
-		{
-			Yii::$app->response->cookies->add(new \yii\web\Cookie([
-					'name' => 'mail',
-					'value' => ''
-			]));
-		}
-		
 		$query = Information::find()->where(['users_id' => Yii::$app->user->id]);
 		
 		$pagination = new Pagination([
@@ -87,7 +52,14 @@ class ContactsController extends Controller
 			$i = ($pagination->getPage()+1) * ROWLIMIT - ROWLIMIT + 1;
 		}
 		
-		return $this->render('index', ['contacts' => $contacts, 'i' => $i, 'pagination' => $pagination ]);
+		if(Yii::$app->request->isAjax)
+		{
+			return $this->renderAjax('index_ajax', ['contacts' => $contacts, 'i' => $i, 'pagination' => $pagination ]);
+		}
+		else{
+			return $this->render('index', ['contacts' => $contacts, 'i' => $i, 'pagination' => $pagination ]);
+		}
+		
 	}
 	
 	public function actionAdd()
@@ -98,23 +70,9 @@ class ContactsController extends Controller
 		if($model->load(Yii::$app->request->post()) && $model->validate())
 		{
 			
-			(new \yii\db\Query())->createCommand()->insert('Information', [
-					'users_id' => Yii::$app->user->identity['id'],
-					'FirstName' => Yii::$app->request->post()['Information']['FirstName'],
-					'LastName' => Yii::$app->request->post()['Information']['LastName'],
-					'Email' => Yii::$app->request->post()['Information']['Email'],
-					'Home' => Yii::$app->request->post()['Information']['Home'],
-					'Work' => Yii::$app->request->post()['Information']['Work'],
-					'Cell' => Yii::$app->request->post()['Information']['Cell'],
-					'Adress1' => Yii::$app->request->post()['Information']['Adress1'],
-					'Adress2' => Yii::$app->request->post()['Information']['Adress2'],
-					'City' => Yii::$app->request->post()['Information']['City'],
-					'State' => Yii::$app->request->post()['Information']['State'],
-					'Zip' => Yii::$app->request->post()['Information']['Zip'],
-					'Country' => Yii::$app->request->post()['Information']['Country'],
-					'BirthDate' => Yii::$app->request->post()['Information']['date'],
-					'Telephone' => $this->Select_telephone()
-			])->execute();
+			$model->Telephone = $this->Select_telephone();
+			$model->users_id = Yii::$app->user->id;
+			$model->save();
 			
 			$this->redirect('/');
 		}
@@ -125,67 +83,44 @@ class ContactsController extends Controller
 	public function actionEdit()
 	{
 		
-		$model = new Information();
+		$model = Information::findOne(Yii::$app->request->get('id'));
 		$model->radio = 'Work';
-		
-		$contact = (new \yii\db\Query())
-			->select('*')
-			->from('Information')
-			->where(['users_id' => Yii::$app->user->id, 'id' => Yii::$app->request->get('id')])
-			->one();
-		
-			if(!$contact)
-			{
-				$this->redirect('/');
-			}
+
+		if(!$model)
+		{
+			$this->redirect('/');
+		}
 			
-			switch ($contact['Telephone'])
-			{
-				case $contact['Home']:
-					$model->radio = 'Home';
-					break;
-				case $contact['Work']:
-					$model->radio = 'Work';
-					break;
-				case $contact['Cell']: 
-					$model->radio = 'Cell';
-					break;
-			}
+		switch ($model['Telephone'])
+		{
+			case $model['Home']:
+				$model->radio = 'Home';
+				break;
+			case $model['Work']:
+				$model->radio = 'Work';
+				break;
+			case $model['Cell']: 
+				$model->radio = 'Cell';
+				break;
+		}
 		
 		if($model->load(Yii::$app->request->post()) && $model->validate())
 		{
-			(new \yii\db\Query())->createCommand()->update('Information', [
-					'FirstName' => Yii::$app->request->post()['Information']['FirstName'],
-					'LastName' => Yii::$app->request->post()['Information']['LastName'],
-					'Email' => Yii::$app->request->post()['Information']['Email'],
-					'Home' => Yii::$app->request->post()['Information']['Home'],
-					'Work' => Yii::$app->request->post()['Information']['Work'],
-					'Cell' => Yii::$app->request->post()['Information']['Cell'],
-					'Adress1' => Yii::$app->request->post()['Information']['Adress1'],
-					'Adress2' => Yii::$app->request->post()['Information']['Adress2'],
-					'City' => Yii::$app->request->post()['Information']['City'],
-					'State' => Yii::$app->request->post()['Information']['State'],
-					'Zip' => Yii::$app->request->post()['Information']['Zip'],
-					'Country' => Yii::$app->request->post()['Information']['Country'],
-					'BirthDate' => Yii::$app->request->post()['Information']['date'],
-					'Telephone' => $this->Select_telephone()
-			], ['id' => Yii::$app->request->get('id')])
-			->execute();
-				
+			
+			$model->users_id = Yii::$app->user->id;
+			$model->update();
 			$this->redirect('/');
 		}
 		
-		return $this->render('editcontact', ['model' => $model, 'contact' => $contact]);
+		return $this->render('editcontact', ['model' => $model]);
 	}
 	
 	public function actionView()
 	{
-		
-		$contact = (new \yii\db\Query())
-		->select('*')
-		->from('Information')
-		->where(['users_id' => Yii::$app->user->id, 'id' => Yii::$app->request->get('id')])
-		->one();
+			
+		$contact = Information::find()->
+			where(['users_id' => Yii::$app->user->id, 'id' => Yii::$app->request->get('id')])->
+			one();
 		
 		if(!$contact)
 		{
@@ -206,6 +141,20 @@ class ContactsController extends Controller
 	
 	public function actionLetter()
 	{
+		
+		if(isset(Yii::$app->request->post()['Information']['letter']))
+		{
+			if(!empty(Yii::$app->request->cookies->getValue('mail')))
+			{
+				Yii::$app->response->cookies->add(new \yii\web\Cookie([
+						'name' => 'mail',
+						'value' => ''
+				]));
+			}
+			
+			$this->redirect('/');
+		}
+		
 		$mails = NULL;
 		
 		if(!empty($_COOKIE['select']))
@@ -249,29 +198,6 @@ class ContactsController extends Controller
 		return $this->render('letter', ['model' => $model, 'mails' => $mails]);
 	}
 	
-	public function actionSelect_ajax()
-	{
-		
-		$model = new Information();
-		
-		$query = Information::find()->where(['users_id' => Yii::$app->user->id]);
-		
-		$pagination = new Pagination([
-				'defaultPageSize' => ROWLIMIT,
-				'totalCount' => $query->count(),
-		
-		]);
-		
-		$sort = $this->Sort_contacts();
-		
-		$contacts = $query->orderBy($sort)
-		->offset($pagination->offset)
-		->limit($pagination->limit)
-		->all();
-		
-		return $this->renderAjax('select_ajax', ['model' => $model, 'contacts' => $contacts, 'pagination' => $pagination]);
-	}
-	
 	public function actionSelect()
 	{
 		
@@ -292,7 +218,13 @@ class ContactsController extends Controller
 		->limit($pagination->limit)
 		->all();
 		
-		return $this->render('select', ['model' => $model, 'contacts' => $contacts, 'pagination' => $pagination]);
+		if(Yii::$app->request->isAjax)
+		{
+			return $this->renderAjax('select_ajax', ['model' => $model, 'contacts' => $contacts, 'pagination' => $pagination]);
+		}
+		else{
+			return $this->render('select', ['model' => $model, 'contacts' => $contacts, 'pagination' => $pagination]);
+		}
 	}
 	
 	public function Sort_contacts()

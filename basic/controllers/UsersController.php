@@ -32,7 +32,8 @@ Class UsersController extends Controller
 		$model = new User();
 		$model->scenario = User::SCENARIO_LOGIN;
 		
-		if($model->load(Yii::$app->request->post()) && $model->validate()) {
+		if($model->load(Yii::$app->request->post()) && $model->validate())
+		{
 			
 			$user = User::findOne(['login' => Yii::$app->request->post()['User']['login']]);
 			
@@ -61,7 +62,7 @@ Class UsersController extends Controller
 		$model->scenario = User::SCENARIO_REGISTER;
 		
 		if($model->load(Yii::$app->request->post()) && $model->validate()) 
-		{
+		{	
 			$model->password = Yii::$app->getSecurity()->generatePasswordHash(Yii::$app->request->post()['User']['password']);
 			$model->save(false);
 			

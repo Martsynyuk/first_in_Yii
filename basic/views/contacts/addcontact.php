@@ -52,7 +52,7 @@ use yii\helpers\Url;
     <?= $form->field($model, 'Country')->label('Country :') ?>
   </li>
   <li>
-		<?= $form->field($model, 'date')->input('text', ['placeholder' => 'Year-month-day'])->label('BirthDate :');?>						
+		<?= $form->field($model, 'BirthDate')->input('text', ['placeholder' => 'Year-month-day'])->label('BirthDate :');?>						
   </li>
 </ul>  
     <div class="form-group">

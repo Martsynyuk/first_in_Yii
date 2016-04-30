@@ -12,46 +12,46 @@ use yii\helpers\Url;
 	<?php $form = ActiveForm::begin(); ?>
 <ul>
 	<li>
-    <?= $form->field($model, 'FirstName')->input('text', ['value' => $contact['FirstName']])->label('FirstName :') ?>
+    <?= $form->field($model, 'FirstName')->input('text', ['value' => $model['FirstName']])->label('FirstName :') ?>
   </li> 
   <li>
-    <?= $form->field($model, 'LastName')->input('text', ['value' => $contact['LastName']])->label('LastName :') ?>
+    <?= $form->field($model, 'LastName')->input('text', ['value' => $model['LastName']])->label('LastName :') ?>
   </li>
   <li>  
-    <?= $form->field($model, 'Email')->input('email', ['value' => $contact['Email']])->label('Email :') ?>
+    <?= $form->field($model, 'Email')->input('email', ['value' => $model['Email']])->label('Email :') ?>
   </li>
   <li>
   	<?= $form->field($model, 'radio')->radio(['class' => 'radio', 'value' => 'Home', 'label' => 'Home :', 'uncheck' => null]) ?>
-    <?= $form->field($model, 'Home')->input('text', ['value' => $contact['Home']])->label('') ?>
+    <?= $form->field($model, 'Home')->input('text', ['value' => $model['Home']])->label('') ?>
   </li>
   <li>
   	<?= $form->field($model, 'radio')->radio(['class' => 'radio', 'value' => 'Work', 'label' => 'Work :', 'uncheck' => null]) ?>
-    <?= $form->field($model, 'Work')->input('text', ['value' => $contact['Work']])->label('') ?>
+    <?= $form->field($model, 'Work')->input('text', ['value' => $model['Work']])->label('') ?>
   </li>
   <li>
   	<?= $form->field($model, 'radio')->radio(['class' => 'radio', 'value' => 'Cell', 'label' => 'Cell :', 'uncheck' => null]) ?>
-    <?= $form->field($model, 'Cell')->input('text', ['value' => $contact['Cell']])->label('') ?>
+    <?= $form->field($model, 'Cell')->input('text', ['value' => $model['Cell']])->label('') ?>
   </li>
   <li>
-    <?= $form->field($model, 'Adress1')->input('text', ['value' => $contact['Adress1']])->label('Adress1 :') ?>
+    <?= $form->field($model, 'Adress1')->input('text', ['value' => $model['Adress1']])->label('Adress1 :') ?>
   </li>
   <li>
-    <?= $form->field($model, 'Adress2')->input('text', ['value' => $contact['Adress2']])->label('Adress2 :') ?>
+    <?= $form->field($model, 'Adress2')->input('text', ['value' => $model['Adress2']])->label('Adress2 :') ?>
   </li>
  	<li>
-    <?= $form->field($model, 'City')->input('text', ['value' => $contact['City']])->label('City :') ?>
+    <?= $form->field($model, 'City')->input('text', ['value' => $model['City']])->label('City :') ?>
   </li>
   <li>
-    <?= $form->field($model, 'State')->input('text', ['value' => $contact['State']])->label('State :') ?>
+    <?= $form->field($model, 'State')->input('text', ['value' => $model['State']])->label('State :') ?>
   </li>
   <li>
-    <?= $form->field($model, 'Zip')->input('text', ['value' => $contact['Zip']])->label('Zip :') ?>
+    <?= $form->field($model, 'Zip')->input('text', ['value' => $model['Zip']])->label('Zip :') ?>
   </li>
   <li>  
-    <?= $form->field($model, 'Country')->input('text', ['value' => $contact['Country']])->label('Country :') ?>
+    <?= $form->field($model, 'Country')->input('text', ['value' => $model['Country']])->label('Country :') ?>
   </li>
 	  <li>
-	  	<?= $form->field($model, 'date')->input('text', ['placeholder' => 'Year-month-day'])->label('BirthDate :');?>
+	  	<?= $form->field($model, 'BirthDate')->input('text', ['value' => $model['BirthDate']])->label('BirthDate :');?>
 	  </li>
 </ul>  
     <div class="form-group">
