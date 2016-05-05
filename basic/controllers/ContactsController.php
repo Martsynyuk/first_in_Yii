@@ -96,13 +96,13 @@ class ContactsController extends Controller
 			
 		switch ($model['Telephone'])
 		{
-			case $model['Home']:
+			case 'Home':
 				$model->radio = 'Home';
 				break;
-			case $model['Work']:
+			case 'Work':
 				$model->radio = 'Work';
 				break;
-			case $model['Cell']: 
+			case 'Cell': 
 				$model->radio = 'Cell';
 				break;
 		}
@@ -276,13 +276,13 @@ class ContactsController extends Controller
 		switch (Yii::$app->request->post()['Information']['radio'])
 		{
 			case 'Home':
-				$telephone = Yii::$app->request->post()['Information']['Home'];
+				$telephone = 'Home';
 				break;
 			case 'Work':
-				$telephone =Yii::$app->request->post()['Information']['Work'];
+				$telephone = 'Work';
 				break;
 			case 'Cell':
-				$telephone = Yii::$app->request->post()['Information']['Cell'];
+				$telephone = 'Cell';
 				break;
 		}
 		
