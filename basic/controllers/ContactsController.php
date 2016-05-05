@@ -36,16 +36,19 @@ class ContactsController extends Controller
 				'totalCount' => $query->count(),
 				
 		]);
-		
+	
 		$sort = 'FirstName, LastName';
-
-		$this->Sort_contacts();
+		
+		if(Yii::$app->request->isAjax)
+		{
+			$sort = $this->Sort_contacts();
+		}
 		
 		$contacts = $query->orderBy($sort)
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
-		
+        
 		$i = 1; // count for contacts
 		if($pagination->getPage() == 1 or $pagination->getPage() > 1)
 		{

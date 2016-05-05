@@ -55,7 +55,7 @@ class Main {
 	
 	sort(obj)
 	{
-		console.log('asdasd');
+		
 		var url = [$('.container').data('class'), $('.container').data('method')];
 		
 		var sorting = $(obj).data('sort');
