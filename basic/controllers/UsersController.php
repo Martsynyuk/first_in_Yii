@@ -6,7 +6,6 @@ use Yii;
 use yii\web\Controller;
 use app\models\RegistrationForm;
 use app\models\User;
-use app\models\Auth;
 
 Class UsersController extends Controller
 {
