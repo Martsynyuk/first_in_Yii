@@ -37,7 +37,8 @@ class TestController extends Controller
 	
 	public function telephoneUpdate($id, $telephone)
 	{
-		$update = new Information();
-		$update->updateAll(['Telephone' => $telephone], ['id' => $id]);
+		$update = Information::findOne(['id' => $id]);
+		$update->Telephone = $telephone;
+		$update->update(false);
 	}
 }
