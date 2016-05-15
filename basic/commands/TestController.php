@@ -14,6 +14,7 @@ class TestController extends Controller
 {
 	/**
 	 */
+	
 	public function actionIndex()
 	{
 		$test = Information::find()->select(['id', 'Home', 'Work', 'Cell', 'Telephone'])->all();
@@ -33,6 +34,11 @@ class TestController extends Controller
 				$this->telephoneUpdate($val['id'], 'Cell');
 			}
 		}
+	}
+	
+	public function actionTest($argument)
+	{
+		var_dump($argument);
 	}
 	
 	public function telephoneUpdate($id, $telephone)
