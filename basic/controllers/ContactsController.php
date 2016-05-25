@@ -7,25 +7,34 @@ use yii\web\Controller;
 use yii\data\Pagination;
 use app\models\Information;
 use yii\base\Request;
+use yii\filters\AccessControl;
+
 
 class ContactsController extends Controller
 {
 	public $layout = 'main';
 	
-	public function beforeAction($action)
+	public function behaviors()
 	{
-		$this->Authenticate();
-		return true;
+		return [
+				'access' => [
+						'class' => AccessControl::className(),
+						'denyCallback' => function(){
+						$this->redirect('/users/autorization');
+						},
+						'only' => ['index', 'add', 'edit', 'view', 'delete', 'letter', 'select'],
+						'rules' => [
+								[
+									'actions' => ['index', 'add', 'edit', 'view', 'delete', 'letter', 'select'],
+									'allow' => true,
+									'roles' => ['@'],
+								],
+						],
+				],
+	
+		];
 	}
 	
-	public function Authenticate()
-	{
-		if(empty(Yii::$app->user->identity))
-		{
-			$this->redirect('/users/autorization/');
-		}
-	}
-
 	public function actionIndex()
 	{
 			

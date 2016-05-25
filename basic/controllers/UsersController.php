@@ -6,25 +6,40 @@ use Yii;
 use yii\web\Controller;
 use app\models\RegistrationForm;
 use app\models\User;
+use yii\filters\AccessControl;
 
 Class UsersController extends Controller
 {
 	public $layout = 'main';
 	
-	public function beforeAction($action)
+	public function behaviors()
 	{
-		$this->Authenticate();
-		return true;
+		return [
+				'access' => [
+					'class' => AccessControl::className(),
+					'denyCallback' => function(){
+						$this->redirect('/');
+					},
+					'only' => ['autorization', 'registration', 'logout'],
+					'rules' => [
+							[
+								'actions' => ['autorization', 'registration'],
+								'allow' => true,
+								'roles' => ['?'],
+							],
+							
+							[
+								'actions' => ['logout'],
+								'allow' => true,
+								'roles' => ['@'],
+							],
+										
+					],
+				],
+				
+		];
 	}
 	
-	public function Authenticate()
-	{
-		if(!empty(Yii::$app->user->identity))
-		{
-			$this->redirect('/');
-		}
-	}
-		
 	public function actionAutorization()
 	{
 		
