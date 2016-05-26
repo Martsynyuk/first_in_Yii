@@ -130,9 +130,9 @@ class ContactsController extends Controller
 	public function actionView()
 	{
 			
-		$contact = Information::find()->
-			where(['users_id' => Yii::$app->user->id, 'id' => Yii::$app->request->get('id')])->
-			one();
+		$contact = Information::find()
+			->where(['users_id' => Yii::$app->user->id, 'id' => Yii::$app->request->get('id')])
+			->one();
 		
 		if(!$contact)
 		{
@@ -246,15 +246,16 @@ class ContactsController extends Controller
 		{
 			$sort_first = 'FirstName';
 		}
-		if( Yii::$app->request->get('first') === 'FirstNameDown'){
-				
+		elseif( Yii::$app->request->get('first') === 'FirstNameDown')
+		{
 			$sort_first = 'FirstName DESC';
 		}
+		
 		if( Yii::$app->request->get('second') === 'LastNameUp')
 		{
 			$sort_second = ', LastName';
 		}
-		if( Yii::$app->request->get('second') === 'LastNameDown')
+		elseif( Yii::$app->request->get('second') === 'LastNameDown')
 		{
 			$sort_second = ', LastName DESC';
 		}
